@@ -1,4 +1,21 @@
 {
+  "name": "gatsby-theme-nehalem",
+  "author": {
+    "name": "Kevin Hirczy",
+    "email": "kevin@nehalist.io",
+    "url": "https://nehalist.io"
+  },
+  "repository": {
+    "type": "git",
+    "repository": "https://github.com/nehalist/gatsby-theme-nehalem"
+  },
+  "bugs": {
+    "url": "https://github.com/nehalist/gatsby-theme-nehalem/issues"
+  },
+  "keywords": ["gatsby", "gatsby-theme", "gatsby-plugin"],
+  "scripts": {
+    "lint": "tslint -c tslint.json 'theme/src/**/*.{ts,tsx}'"
+  },
   "private": true,
   "workspaces": [
     "theme",
