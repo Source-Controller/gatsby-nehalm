@@ -6,12 +6,13 @@
 export default {
   colors: {
     text: "#232129",
-    background: "#fff",
+    background: "#fafafa",
     primary: "#639",
   },
   fonts: {
     default:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",' +
+      ' "Segoe UI Emoji", "Segoe UI Symbol"',
   },
   fontSizes: [16, 18, 20, 22, 27, 36],
   lineHeights: {
@@ -59,4 +60,4 @@ export default {
       lineHeight: "heading",
     },
   },
-}
+};
