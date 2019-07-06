@@ -4369,6 +4369,16 @@ gatsby-telemetry@^1.1.2:
     stack-utils "1.0.2"
     uuid "3.3.2"
 
+gatsby-theme-jam-example@*:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-jam-example/-/gatsby-theme-jam-example-1.0.0.tgz#0b318d7d2feb5f8cc189732b878349a1099859ab"
+  integrity sha512-WHlqaF3ewzNIWZgrpbUy2nU6SoHPsoYM5N8N1C2P0MhhjZlV32mzrXOnMxI6We1PltfgzQGdzwh9XWvtp1Ow8Q==
+  dependencies:
+    "@emotion/core" "^10.0.14"
+    "@mdx-js/react" "^1.0.21"
+    gatsby-plugin-theme-ui "^0.2.2"
+    theme-ui "^0.2.2"
+
 gatsby@^2.13.1:
   version "2.13.1"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.1.tgz#af55152ed738cf3918e9b3cc16a7991863da70ce"

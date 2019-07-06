@@ -1,11 +1,21 @@
 {
-  "name": "gatsby-theme-jam-example",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "name": "gatsby-theme-nehalem",
+  "author": {
+    "name": "Kevin Hirczy",
+    "email": "kevin@nehalist.io",
+    "url": "https://nehalist.io"
+  },
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "tslint -c ../tslint.json 'theme/src/**/*.{ts,tsx}'"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
+    "repository": "https://github.com/nehalist/gatsby-theme-nehalem"
   },
-  "version": "1.0.1",
+  "bugs": {
+    "url": "https://github.com/nehalist/gatsby-theme-nehalem/issues"
+  },
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
