@@ -11,3 +11,4 @@ install:
 
 script:
   - yarn run lint
+  - yarn workspace demo build
