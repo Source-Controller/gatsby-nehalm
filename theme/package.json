@@ -7,7 +7,9 @@
   },
   "version": "0.1.0",
   "scripts": {
-    "lint": "tslint -c ../tslint.json 'theme/src/**/*.{ts,tsx}'"
+    "lint:ts": "tslint -c ../tslint.json 'theme/src/**/*.{ts,tsx}'",
+    "lint:css": "stylelint --config ../.stylelintrc './src/**/*.{ts,tsx}'",
+    "lint": "yarn run lint:ts && yarn run lint:css"
   },
   "repository": {
     "type": "git",
@@ -26,17 +28,22 @@
   "devDependencies": {
     "gatsby": "^2.13.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
-  "dependencies": {
-    "@emotion/core": "^10.0.14",
-    "@mdx-js/react": "^1.0.21",
-    "gatsby-plugin-theme-ui": "^0.2.2",
-    "gatsby-plugin-typescript": "^2.1.0",
-    "theme-ui": "^0.2.2",
+    "react-dom": "^16.8.6",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended": "^2.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.8.0",
     "tslint": "^5.18.0",
     "tslint-react": "^4.0.0",
-    "tslint-react-hooks": "^2.1.1",
+    "tslint-react-hooks": "^2.1.1"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^1.0.21",
+    "@types/styled-components": "^4.1.16",
+    "gatsby-plugin-styled-components": "^3.1.0",
+    "gatsby-plugin-typescript": "^2.1.0",
+    "styled-components": "^4.3.2",
+    "styled-normalize": "^8.0.6",
     "typescript": "^3.5.2"
   },
   "keywords": [

@@ -1,6 +1,5 @@
 import React, {FunctionComponent, ReactNode} from "react";
-import {css, Global} from "@emotion/core";
-import {Container, Header, Layout as StyledLayout, Main} from "theme-ui";
+import GlobalStyle from "../styles/global-style";
 import {graphql, useStaticQuery} from "gatsby";
 
 interface LayoutProps {
@@ -19,21 +18,11 @@ const Layout: FunctionComponent<LayoutProps> = ({children}) => {
   `);
 
   return (
-    <StyledLayout>
-      <Global
-        styles={css`
-          body {
-            margin: 0;
-          }
-        `}
-      />
-      <Header>
-        <span>{data.site.siteMetadata.title}</span>
-      </Header>
-      <Main>
-        <Container>{children}</Container>
-      </Main>
-    </StyledLayout>
+    <div>
+      <GlobalStyle />
+      {data.site.siteMetadata.title}
+      {children}
+    </div>
   );
 };
 
