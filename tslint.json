@@ -10,6 +10,7 @@
     "ordered-imports": false,
     "jsx-no-multiline-js": false,
     "quotemark": false,
+    "arrow-parens": false,
     "react-hooks-nesting": "error"
   }
 }

@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Theme Jam Example Submission`,
+    title: `nehalem`,
+    description: `A Gatsby theme for bloggers`
   },
   plugins: [
-    `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-typescript`
-  ],
+    `gatsby-plugin-typescript`,
+  ]
 };
