@@ -1,3 +1,13 @@
+const fs = require('fs');
+
+exports.onPreBootstrap = ({}, themeOptions) => {
+  const contentPath = themeOptions.contentPath || 'content';
+
+  if (!fs.existsSync(contentPath)) {
+    fs.mkdirSync(contentPath);
+  }
+};
+
 exports.createPages = ({ actions, reporter }) => {
   reporter.warn("make sure to load data from somewhere!");
 
