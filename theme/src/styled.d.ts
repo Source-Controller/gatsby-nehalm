@@ -15,7 +15,7 @@ declare module 'styled-components' {
       }
       header: {
         height: string;
-        backgroundColor: string;
+        background: string;
       };
     };
   }

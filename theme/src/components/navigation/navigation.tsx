@@ -17,7 +17,6 @@ const Navigation: FunctionComponent<NavigationProps> = (props) => {
       <NavWrapper>
         <NavMenu>
           <NavMenuItem>foo</NavMenuItem>
-          <NavMenuItem>bar</NavMenuItem>
         </NavMenu>
       </NavWrapper>
     </Nav>

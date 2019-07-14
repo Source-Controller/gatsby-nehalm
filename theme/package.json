@@ -45,6 +45,8 @@
     "gatsby-plugin-styled-components": "^3.1.0",
     "gatsby-plugin-typescript": "^2.1.0",
     "gatsby-source-filesystem": "^2.1.5",
+    "react-string-replace": "^0.4.4",
+    "react-typed": "^1.1.2",
     "styled-components": "^4.3.2",
     "styled-normalize": "^8.0.6",
     "typescript": "^3.5.2"

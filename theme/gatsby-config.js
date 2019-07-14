@@ -1,7 +1,15 @@
 module.exports = (themeOptions) => ({
   siteMetadata: {
     title: `nehalem`,
-    description: `A Gatsby theme for bloggers`
+    description: `A Gatsby theme for %TOPICS%`,
+    topics: [
+      `bloggers`,
+      `writers`,
+      `geeks`,
+      `nerds`,
+      `people`,
+      `pretty much everyone`
+    ]
   },
   plugins: [
     `gatsby-plugin-typescript`,

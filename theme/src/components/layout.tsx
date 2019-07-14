@@ -17,6 +17,7 @@ const Layout: FunctionComponent<LayoutProps> = ({children}) => {
         siteMetadata {
           title
           description
+          topics
         }
       }
     }
@@ -29,6 +30,7 @@ const Layout: FunctionComponent<LayoutProps> = ({children}) => {
       <Header
         title={data.site.siteMetadata.title}
         description={data.site.siteMetadata.description}
+        topics={data.site.siteMetadata.topics}
       />
       <main>
         {children}
