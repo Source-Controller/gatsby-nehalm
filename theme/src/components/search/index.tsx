@@ -4,10 +4,10 @@ import {ResultsTitle, SearchBox, SearchInput, SearchResults} from "./style";
 import {NavMenuItem} from "../navigation/style";
 
 export const Search: FunctionComponent = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const inputRef            = useRef<HTMLInputElement>(null);
-  const resultListRef       = useRef<HTMLUListElement>(null);
-  const searchRef           = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen]       = useState<boolean>(false);
+  const inputRef                  = useRef<HTMLInputElement>(null);
+  const resultListRef             = useRef<HTMLUListElement>(null);
+  const searchRef                 = useRef<HTMLDivElement>(null);
   // const resultRefs: HTMLElement[] = [];
 
   useEffect(() => {
@@ -23,9 +23,6 @@ export const Search: FunctionComponent = () => {
 
   const toggleSearch = () => {
     setIsOpen(!isOpen);
-    if (inputRef.current && isOpen) {
-      inputRef.current.focus();
-    }
   };
 
   return (
