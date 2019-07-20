@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import {NavMenuItem} from "../navigation/style";
-
-export const ToggleSearchButton = styled(NavMenuItem)`
-`;
 
 export const SearchBox = styled.div<{ readonly open: boolean }>`
   display: ${props => props.open ? 'block' : 'none'};
@@ -41,7 +37,7 @@ export const ResultsTitle = styled.h5`
   padding: 5px 15px;
   background-color: #000;
   margin: 0;
-  color: #fff;  
+  color: #fff;
 `;
 
 export const SearchResults = styled.ul`

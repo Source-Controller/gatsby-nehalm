@@ -1,12 +1,13 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import {FaSearch} from "react-icons/fa";
-import {ResultsTitle, SearchBox, SearchInput, SearchResults, ToggleSearchButton} from "./style";
+import {ResultsTitle, SearchBox, SearchInput, SearchResults} from "./style";
+import {NavMenuItem} from "../navigation/style";
 
 export const Search: FunctionComponent = () => {
-  const [isOpen, setIsOpen]       = useState<boolean>(false);
-  const inputRef                  = useRef<HTMLInputElement>(null);
-  const resultListRef             = useRef<HTMLUListElement>(null);
-  const searchRef                 = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const inputRef            = useRef<HTMLInputElement>(null);
+  const resultListRef       = useRef<HTMLUListElement>(null);
+  const searchRef           = useRef<HTMLDivElement>(null);
   // const resultRefs: HTMLElement[] = [];
 
   useEffect(() => {
@@ -29,21 +30,20 @@ export const Search: FunctionComponent = () => {
 
   return (
     <>
-      <ToggleSearchButton
+      <NavMenuItem
         onClick={toggleSearch}
         role={`button`}
         aria-label={`Search`}
         as={`button`}
       >
         <FaSearch/>
-      </ToggleSearchButton>
+      </NavMenuItem>
 
       {isOpen &&
       <SearchBox open={isOpen} ref={searchRef}>
         <SearchInput placeholder={`Search...`} autoFocus={true} ref={inputRef}/>
         <ResultsTitle>Results ()</ResultsTitle>
-        <SearchResults ref={resultListRef}>
-        </SearchResults>
+        <SearchResults ref={resultListRef}/>
       </SearchBox>
       }
     </>
