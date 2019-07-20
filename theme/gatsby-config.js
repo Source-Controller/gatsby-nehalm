@@ -9,13 +9,26 @@ module.exports = (themeOptions) => ({
       `nerds`,
       `people`,
       `pretty much everyone`
-    ]
+    ],
+    logo: `gatsby-icon.png`,
+    menu: [
+      {
+        name: 'Home',
+        path: '/',
+      },
+      {
+        name: 'Foo',
+        path: '/foo'
+      }
+    ],
+    search: true
   },
   plugins: [
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: 'content',
         path: themeOptions.contentPath || 'content'
       }
     },

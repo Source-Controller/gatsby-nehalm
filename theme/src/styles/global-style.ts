@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: ${Theme.fonts.base};
   }
+
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 export default GlobalStyle;

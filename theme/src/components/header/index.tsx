@@ -1,30 +1,28 @@
 import React, {FunctionComponent} from "react";
-import StyledNavigation from "../navigation/navigation";
-import {Description, StyledHeader, Title, TitleWrapper} from "./style";
+import StyledNavigation from "../navigation";
+import {Description, StyledHeader, StyledTopics, Title, TitleWrapper} from "./style";
 import reactStringReplace from 'react-string-replace';
-import Typed from 'react-typed';
-import styled from "styled-components";
+import {MenuItem} from "../../utils/models";
 
 interface HeaderProps {
   title: string;
   description: string;
   topics: string[];
+  logo: string;
+  menu: MenuItem[];
+  search: boolean;
 }
 
-const StyledTopics = styled(Typed)`
-  border-bottom: 3px #000 solid;
-`;
-
-const Header: FunctionComponent<HeaderProps> = ({title, description, topics = []}) => {
+const Header: FunctionComponent<HeaderProps> = ({title, description, logo, menu, topics = [], search = true}) => {
   if (topics.length > 0) {
     description = reactStringReplace(description, '%TOPICS%', () => {
       return (
         <StyledTopics
           strings={topics}
           typeSpeed={50}
-          backSpeed={50}
+          backSpeed={60}
           shuffle={true}
-          backDelay={1000}
+          backDelay={1500}
           loop={true}
         />
       );
@@ -33,7 +31,7 @@ const Header: FunctionComponent<HeaderProps> = ({title, description, topics = []
 
   return (
     <StyledHeader>
-      <StyledNavigation transparent={false} title={`Foobar`}/>
+      <StyledNavigation title={`Foobar`} logo={logo} menu={menu} showSearch={search}/>
       <TitleWrapper>
         <Title>{title}</Title>
         <Description>

@@ -11,6 +11,7 @@
     "jsx-no-multiline-js": false,
     "quotemark": false,
     "arrow-parens": false,
-    "react-hooks-nesting": "error"
+    "react-hooks-nesting": "error",
+    "no-submodule-imports": false
   }
 }
