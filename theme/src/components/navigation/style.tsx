@@ -7,7 +7,17 @@ export const HomeLink = styled(Link)`
   margin-right: 45px;
 `;
 
+export const NavContainer = styled.div<{ dark?: boolean}>`
+  ${props => props.dark && `
+    background-color: #20232a;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 0 3px rgba(0,0,0,.03), 0 3px 46px rgba(0,0,0,.07);
+  `};
+`;
+
 export const Nav = styled(Container)`
+  display: flex;
   position: relative;
 `;
 

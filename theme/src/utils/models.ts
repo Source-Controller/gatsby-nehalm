@@ -21,5 +21,16 @@ export interface StyleProps {
 }
 
 export interface Post {
-  title: string;
+  frontmatter: {
+    title: string;
+    path: string;
+    tags: string[];
+    excerpt: string;
+    created: string;
+    updated: string;
+    featuredImage?: {
+      relativePath: string;
+    }
+  };
+  html: string;
 }

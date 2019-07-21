@@ -1,45 +1,43 @@
 import React, {FunctionComponent} from "react";
-import styled from "styled-components";
-import {HomeLink, Nav, NavMenu, NavMenuItem, NavWrapper, SearchContainer} from "./style";
-import {MenuItem, StyleProps} from "../../utils/models";
+import {HomeLink, Nav, NavContainer, NavMenu, NavMenuItem, NavWrapper, SearchContainer} from "./style";
+import {MenuItem} from "../../utils/models";
 import {Link} from "gatsby";
 import {Search} from "../search";
 
-interface NavigationProps extends StyleProps {
+interface NavigationProps {
   title?: string;
   logo: any;
   menu: MenuItem[];
   showSearch: boolean;
+  dark?: boolean;
 }
 
-const Navigation: FunctionComponent<NavigationProps> = ({title, className, menu, showSearch = true}) => {
+const Navigation: FunctionComponent<NavigationProps> = ({title, menu, dark = false, showSearch = true}) => {
   return (
-    <Nav className={className}>
-      <HomeLink to={`/`}>
-        {title}
-      </HomeLink>
-      <NavWrapper>
-        <NavMenu>
-          {menu.map((item, index) => (
-            <Link to={item.path} key={index}>
-              <NavMenuItem key={index}>{item.name}</NavMenuItem>
-            </Link>
-          ))}
-        </NavMenu>
-        {showSearch &&
-        <NavMenu>
-          <SearchContainer>
-            <Search/>
-          </SearchContainer>
-        </NavMenu>
-        }
-      </NavWrapper>
-    </Nav>
+    <NavContainer dark={dark}>
+      <Nav>
+        <HomeLink to={`/`}>
+          {title}
+        </HomeLink>
+        <NavWrapper>
+          <NavMenu>
+            {menu.map((item, index) => (
+              <Link to={item.path} key={index}>
+                <NavMenuItem key={index}>{item.name}</NavMenuItem>
+              </Link>
+            ))}
+          </NavMenu>
+          {showSearch &&
+          <NavMenu>
+            <SearchContainer>
+              <Search/>
+            </SearchContainer>
+          </NavMenu>
+          }
+        </NavWrapper>
+      </Nav>
+    </NavContainer>
   );
 };
 
-const StyledNavigation = styled(Navigation)`
-  display: flex;
-`;
-
-export default StyledNavigation;
+export default Navigation;

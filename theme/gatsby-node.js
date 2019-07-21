@@ -26,12 +26,30 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     query {
-      allMdx {
+      allMarkdownRemark {
         edges {
           node {
+            id
             frontmatter {
               title
+              path
+              tags
+              excerpt
+              created
+              updated
+              featuredImage {
+                childImageSharp {
+                  sizes(maxWidth: 630) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
             }
+            html
           }
         }
       }
@@ -42,7 +60,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panic(result.errors);
   }
 
-  const posts = result.data.allMdx.edges.map(e => e.node.frontmatter);
+  const posts = result.data.allMarkdownRemark.edges.map(node => node.node);
+
+  posts.forEach(post => {
+    actions.createPage({
+      path: post.frontmatter.path,
+      component: require.resolve("./src/templates/post.tsx"),
+      context: {
+        ...post
+      }
+    });
+  });
 
   actions.createPage({
     path: "/",
@@ -50,5 +78,5 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     context: {
       posts
     }
-  })
+  });
 };

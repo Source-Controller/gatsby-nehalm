@@ -15,7 +15,7 @@ interface HeaderProps {
 
 const Header: FunctionComponent<HeaderProps> = ({title, description, logo, menu, topics = [], search = true}) => {
   if (topics.length > 0) {
-    description = reactStringReplace(description, '%TOPICS%', () => {
+    description = reactStringReplace(description, '%TOPICS%', (match, i) => {
       return (
         <StyledTopics
           strings={topics}
@@ -24,6 +24,7 @@ const Header: FunctionComponent<HeaderProps> = ({title, description, logo, menu,
           shuffle={true}
           backDelay={1500}
           loop={true}
+          key={match + i}
         />
       );
     }) as any;
@@ -31,7 +32,7 @@ const Header: FunctionComponent<HeaderProps> = ({title, description, logo, menu,
 
   return (
     <StyledHeader>
-      <StyledNavigation title={`Foobar`} logo={logo} menu={menu} showSearch={search}/>
+      <StyledNavigation title={title} logo={logo} menu={menu} showSearch={search}/>
       <TitleWrapper>
         <Title>{title}</Title>
         <Description>

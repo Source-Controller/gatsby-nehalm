@@ -25,6 +25,8 @@ module.exports = (themeOptions) => ({
   },
   plugins: [
     `gatsby-plugin-typescript`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -32,6 +34,31 @@ module.exports = (themeOptions) => ({
         path: themeOptions.contentPath || 'content'
       }
     },
-    `gatsby-plugin-mdx`
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'assets',
+        path: themeOptions.assetPath || 'assets'
+      }
+    },
+    {
+      resolve: `gatsby-plugin-lunr`,
+      options: {
+        languages: [
+          {
+            name: 'en'
+          }
+        ],
+        fields: [
+          { name: 'title', store: true }
+        ],
+        resolvers: {
+          allMdx: {
+            title: node => console.log(node)
+          }
+        }
+      }
+    },
+    `gatsby-transformer-remark`,
   ]
 });
