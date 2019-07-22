@@ -4,6 +4,7 @@ import {graphql, useStaticQuery} from "gatsby";
 import Header from "./header";
 import {SiteMetadata} from "../utils/models";
 import Navigation from "./navigation";
+import Footer from "./footer";
 
 interface LayoutProps {
   children: ReactNode;
@@ -53,6 +54,7 @@ const Layout: FunctionComponent<LayoutProps> = ({children, bigHeader = true}) =>
       <main>
         {children}
       </main>
+      <Footer/>
     </>
   );
 };
