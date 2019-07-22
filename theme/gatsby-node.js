@@ -67,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: post.frontmatter.path,
       component: require.resolve("./src/templates/post.tsx"),
       context: {
-        ...post
+        post: post
       }
     });
   });
