@@ -43,7 +43,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
               title={post.frontmatter.title}
               path={post.frontmatter.path}
               featuredImage={post.frontmatter.featuredImage}
-              content={post.html}
+              content={post.frontmatter.excerpt}
               key={index}
               width={index === 0 ? '100%' : '48%'}
             />

@@ -29,9 +29,8 @@ export interface Post {
     excerpt: string;
     created: string;
     updated: string;
-    featuredImage?: {
-      relativePath: string;
-    }
+    featuredImage?: any;
   };
   html: string;
+  headings: Array<{ depth: number }>;
 }

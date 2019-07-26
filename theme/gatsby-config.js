@@ -25,6 +25,10 @@ module.exports = (themeOptions) => ({
       {
         name: 'Test',
         path: '/foo'
+      },
+      {
+        name: 'Foo',
+        path: '/foobar'
       }
     ],
     search: true

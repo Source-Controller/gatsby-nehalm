@@ -3,7 +3,8 @@ import {DefaultTheme} from "styled-components";
 const Theme: DefaultTheme = {
   layout: {
     backgroundColor: `#fafafa`,
-    primaryColor: `#42566a`,
+    primaryColor: `#a4cbb8`,
+    linkColor: `#a4cbb8`,
   },
   fonts: {
     base: `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, ` +

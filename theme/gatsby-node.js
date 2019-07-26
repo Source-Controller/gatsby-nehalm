@@ -30,6 +30,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         edges {
           node {
             id
+            headings {
+              depth
+            }
             frontmatter {
               title
               path
@@ -39,7 +42,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               updated
               featuredImage {
                 childImageSharp {
-                  sizes(maxWidth: 630) {
+                  sizes(maxWidth: 630, quality: 90) {
                     base64
                     aspectRatio
                     src

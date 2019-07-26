@@ -94,4 +94,4 @@ teneo *nataque*, quos sit; et manus supereminet quem matutinaeque vides.
 Cupit medio animosa. Cursus haurire. Ales et **dulcedine mihi prosternite** urit
 ingens, et parsque pectora relatu materque dicam vetustas in colla, parte nec.
 Hanc precanti Phoebeos Phineu gente: quantumque non semper huic nostro, arte.
-Coniunx rursus est merito revulsum Veneris, nec et edidit populus.
+Coniunx rursus est `merito revulsum` Veneris, nec et edidit populus.

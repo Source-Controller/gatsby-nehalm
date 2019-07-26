@@ -9,7 +9,8 @@ const StyledFooter = styled.footer`
   border-top: 1px #e5eff5 solid;
   max-width: 100%;
   padding: 10px 0;
-  margin: 10px 0 0;
+  z-index: 700;
+  position: relative;
 `;
 
 const FooterContainer = styled(Container)`
@@ -40,6 +41,23 @@ const DesignBy = styled.p`
   }
 `;
 
+const StyledNav = styled.nav`
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 25px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
 const FooterMenuItem = styled(Link)`
   color: #000;
   text-decoration: none;
@@ -54,11 +72,15 @@ const Footer: FunctionComponent<FooterProps> = ({menu, owner}) =>  {
   return (
     <StyledFooter>
       <FooterContainer>
-        <div>
-          {menu.map((item, index) => (
-            <FooterMenuItem to={item.path} key={index}>{item.name}</FooterMenuItem>
-          ))}
-        </div>
+        <StyledNav>
+          <ul>
+            {menu.map((item, index) => (
+              <li key={index}>
+                <FooterMenuItem to={item.path}>{item.name}</FooterMenuItem>
+              </li>
+            ))}
+          </ul>
+        </StyledNav>
         <div>
           <Copyright>
             <strong>{owner}</strong>&nbsp;&copy; {new Date().getFullYear()}

@@ -12,11 +12,24 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: ${Theme.fonts.base};
-    line-height: 1.6em;
+    line-height: 1.9em;
   }
 
   * {
     box-sizing: border-box;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    outline: none;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .gatsby-highlight {
+    max-width: 100% !important;
   }
 
   .gatsby-highlight-code-line {
