@@ -8,6 +8,7 @@ export const HomeLink = styled(Link)`
 `;
 
 export const NavContainer = styled.div<{ dark?: boolean}>`
+  z-index: 1000;
   ${props => props.dark && `
     background-color: #20232a;
     position: sticky;

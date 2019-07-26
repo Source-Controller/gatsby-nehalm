@@ -24,6 +24,10 @@ const Layout: FunctionComponent<LayoutProps> = ({children, bigHeader = true}) =>
             name
             path
           }
+          footerMenu {
+            name
+            path
+          }
           search
         }
       }
@@ -54,7 +58,7 @@ const Layout: FunctionComponent<LayoutProps> = ({children, bigHeader = true}) =>
       <main>
         {children}
       </main>
-      <Footer/>
+      <Footer menu={data.site.siteMetadata.footerMenu} owner={data.site.siteMetadata.title}/>
     </>
   );
 };

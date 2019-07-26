@@ -21,6 +21,12 @@ module.exports = (themeOptions) => ({
         path: '/foo'
       }
     ],
+    footerMenu: [
+      {
+        name: 'Test',
+        path: '/foo'
+      }
+    ],
     search: true
   },
   plugins: [
@@ -59,6 +65,14 @@ module.exports = (themeOptions) => ({
         }
       }
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-prismjs`
+        ]
+      }
+    },
   ]
 });

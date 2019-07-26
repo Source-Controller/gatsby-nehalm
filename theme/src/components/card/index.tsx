@@ -37,7 +37,7 @@ const FeaturedImage = styled(Img)`
   max-height: 100%;
 `;
 
-export const Card: FunctionComponent<CardProps> = ({title, path, featuredImage, meta, content, width = '47%'}) => {
+export const Card: FunctionComponent<CardProps> = ({title, path, featuredImage, content, width = '47%'}) => {
   return (
     <StyledCard to={path} width={width}>
       {featuredImage &&

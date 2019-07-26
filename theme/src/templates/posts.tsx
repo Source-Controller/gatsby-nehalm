@@ -4,7 +4,6 @@ import {Container} from "../components/common";
 import {Post} from "../utils/models";
 import {Card} from "../components/card";
 import styled from "styled-components";
-import {graphql} from "gatsby";
 
 interface PostsPageProps {
   pathContext: {

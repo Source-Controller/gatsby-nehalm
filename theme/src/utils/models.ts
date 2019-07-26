@@ -6,6 +6,7 @@ export interface SiteMetadata {
       topics: string[];
       logo: string;
       menu: MenuItem[];
+      footerMenu: MenuItem[];
       search: boolean;
     };
   };

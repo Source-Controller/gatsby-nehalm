@@ -1,11 +1,12 @@
 import React, {FunctionComponent} from "react";
-import {HomeLink, Nav, NavContainer, NavMenu, NavMenuItem, NavWrapper, SearchContainer} from "./style";
+import {Nav, NavContainer, NavMenu, NavMenuItem, NavWrapper, SearchContainer} from "./style";
 import {MenuItem} from "../../utils/models";
 import {Link} from "gatsby";
 import {Search} from "../search";
+import Logo from "../logo";
 
 interface NavigationProps {
-  title?: string;
+  title: string;
   logo: any;
   menu: MenuItem[];
   showSearch: boolean;
@@ -16,9 +17,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({title, menu, dark = fal
   return (
     <NavContainer dark={dark}>
       <Nav>
-        <HomeLink to={`/`}>
-          {title}
-        </HomeLink>
+        <Logo title={title}/>
         <NavWrapper>
           <NavMenu>
             {menu.map((item, index) => (

@@ -12,10 +12,20 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: ${Theme.fonts.base};
+    line-height: 1.6em;
   }
 
   * {
     box-sizing: border-box;
+  }
+
+  .gatsby-highlight-code-line {
+    background-color: #353631;
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
   }
 `;
 
