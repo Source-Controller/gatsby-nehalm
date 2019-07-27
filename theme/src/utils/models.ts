@@ -28,6 +28,7 @@ export interface Post {
     tags: string[];
     excerpt: string;
     created: string;
+    createdPretty: string;
     updated: string;
     featuredImage?: any;
   };

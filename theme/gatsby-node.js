@@ -1,6 +1,7 @@
-const fs = require('fs');
-const mkdirp = require('mkdirp');
-const path = require('path');
+const fs      = require('fs');
+const mkdirp  = require('mkdirp');
+const path    = require('path');
+const slugify = require('slugify');
 
 /**
  * Before booting up Gatsby make sure the content path directory exists.
@@ -9,7 +10,7 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   const { program } = store.getState();
 
   const contentPath = themeOptions.contentPath || 'content';
-  const assetPath = themeOptions.assetPath || 'assets';
+  const assetPath   = themeOptions.assetPath || 'assets';
 
   const directories = [
     path.join(program.directory, contentPath),
@@ -23,10 +24,12 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   })
 };
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
+  const postsPerPage = themeOptions.postsPerPage ? themeOptions.postsPerPage : 5;
+
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(limit: ${postsPerPage}, sort: {fields: frontmatter___created, order: DESC}) {
         edges {
           node {
             id
@@ -39,6 +42,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               tags
               excerpt
               created
+              createdPretty: created(formatString: "DD MMMM, YYYY")
               updated
               featuredImage {
                 childImageSharp {
@@ -63,21 +67,36 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panic(result.errors);
   }
 
+  let tags    = [];
   const posts = result.data.allMarkdownRemark.edges.map(node => node.node);
 
   posts.forEach(post => {
+    if (post.frontmatter.tags) {
+      tags.push(...post.frontmatter.tags);
+    }
     actions.createPage({
       path: post.frontmatter.path,
-      component: require.resolve("./src/templates/post.tsx"),
+      component: require.resolve(`./src/templates/post.tsx`),
       context: {
         post: post
       }
     });
   });
 
+  [...new Set(tags)].forEach(tag => {
+    const slugified = slugify(tag, { lower: true });
+    actions.createPage({
+      path: `/tag/${slugified}`,
+      component: require.resolve(`./src/templates/tag.tsx`),
+      context: {
+        tag
+      }
+    });
+  });
+
   actions.createPage({
     path: "/",
-    component: require.resolve("./src/templates/posts.tsx"),
+    component: require.resolve(`./src/templates/posts.tsx`),
     context: {
       posts
     }

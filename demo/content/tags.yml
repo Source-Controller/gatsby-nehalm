@@ -1,0 +1,4 @@
+- name: JavaScript
+  color: "#ff0000"
+  icon: ~
+  featured: false

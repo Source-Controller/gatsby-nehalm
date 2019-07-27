@@ -2,7 +2,7 @@
 title: Foobar!
 path: "/foobar"
 tags: ["Vue", "Symfony"]
-featuredImage: "./test.jpg"
+featuredImage: "../assets/images/test.jpg"
 excerpt: Ohhhh boyyyyyyy....
 created: 2019-07-20
 updated: 2019-07-20
@@ -47,6 +47,7 @@ marmore dixit mensuraque mihi prius conscia capitisque noctem, caelo.
 [Sic de sederat](http://mox-maris.io/) viseret prius formam summaque **arida
 lammina omnia**. Bello et dare viscera canisve domum flumina!
 
+![](https://images.unsplash.com/photo-1558981001-5864b3250a69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
 
 ### Avis sanguine
 

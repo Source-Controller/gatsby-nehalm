@@ -26,7 +26,7 @@ const PostsContainer = styled(Container)`
   margin-top: -30px;
 `;
 
-const Sidebar = styled.div`
+const Sidebar = styled.aside`
   width: 315px;
   padding-top: 30px;
 `;
@@ -46,6 +46,13 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
               content={post.frontmatter.excerpt}
               key={index}
               width={index === 0 ? '100%' : '48%'}
+              meta={
+                {
+                  time: post.frontmatter.created,
+                  timePretty: post.frontmatter.createdPretty,
+                  tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null
+                }
+              }
             />
           ))}
         </PostsContainer>

@@ -7,6 +7,7 @@ import Toc from "../components/toc";
 import Img from "gatsby-image";
 import ReadingProgress from "../components/reading-progress";
 import Theme from "../styles/theme";
+import {graphql, Link, StaticQuery, useStaticQuery} from "gatsby";
 
 interface PostTemplateProps {
   pathContext: {
@@ -68,6 +69,12 @@ const PostContent = styled.div`
   code[class*="language-text"] {
     padding: 5px;
   }
+
+  p > img {
+    max-width: 100%;
+    border-radius: .3em;
+    margin: 30px 0;
+  }
 `;
 
 const TocWrapper = styled.div`
@@ -81,15 +88,45 @@ const PostHeader = styled.header`
 `;
 
 const FeaturedImage = styled(Img)`
+  border-radius: 0;
 `;
 
 const StyledPost = styled.section`
   padding: 40px;
 `;
 
+const PostMeta = styled.section`
+  display: flex;
+  justify-content: space-between;
+  opacity: .8;
+  font-size: .9em;
+`;
+
+const PostTitle = styled.h1`
+  margin: 0;
+  padding: 0;
+`;
+
+const PostAddition = styled.div`
+  background-color: #fff;
+  border-top: 1px #e5eff5 solid;
+  border-bottom: 1px #e5eff5 solid;
+  z-index: 700;
+  position: relative;
+`;
+
+const PostFooter = styled.footer`
+`;
+
 const PostTemplate: FunctionComponent<PostTemplateProps> = ({pathContext}) => {
   const post               = pathContext.post;
   const readingProgressRef = createRef<HTMLElement>();
+  // const relatedPosts       = useStaticQuery(graphql`
+  //   query RelatedPosts {
+  //   }
+  // `);
+  //
+  // console.log(relatedPosts);
 
   return (
     <Layout bigHeader={false}>
@@ -105,15 +142,27 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({pathContext}) => {
         <PostContent>
           <article className={`post`} ref={readingProgressRef}>
             <PostHeader>
-              <h1>{post.frontmatter.title}</h1>
+              <PostMeta>
+                {post.frontmatter.tags.length > 0 &&
+                <Link to={`#`}>{post.frontmatter.tags[0]}</Link>
+                }
+                <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>
+              </PostMeta>
+              <PostTitle>{post.frontmatter.title}</PostTitle>
             </PostHeader>
             {post.frontmatter.featuredImage &&
             <FeaturedImage sizes={post.frontmatter.featuredImage.childImageSharp.sizes}/>
             }
             <StyledPost dangerouslySetInnerHTML={{__html: post.html}} className={`post`}/>
+            <PostFooter>
+              footer
+            </PostFooter>
           </article>
         </PostContent>
       </PostContainer>
+      <PostAddition>
+        addition
+      </PostAddition>
     </Layout>
   );
 };

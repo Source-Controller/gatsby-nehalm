@@ -5,12 +5,11 @@ import {MenuItem} from "../../utils/models";
 import {Link} from "gatsby";
 
 const StyledFooter = styled.footer`
-  background-color: #fff;
-  border-top: 1px #e5eff5 solid;
   max-width: 100%;
   padding: 10px 0;
   z-index: 700;
   position: relative;
+  font-size: .9em;
 `;
 
 const FooterContainer = styled(Container)`

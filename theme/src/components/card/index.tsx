@@ -7,24 +7,33 @@ export interface CardProps {
   title: string;
   path: string;
   featuredImage?: any;
-  meta?: string;
   content: string;
   width?: string;
+  meta?: {
+    time: string;
+    timePretty: string;
+    tag: string;
+  };
 }
 
-const StyledCard = styled(Link)<{ width: string }>`
-  display: inline-block;
+const StyledCard = styled(Link)`
+  display: block;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0 1px 1px #e6e6e6, 0 2px 4px #e6e6e6;
   transition: .5s all;
-  width: ${props => props.width};
   margin-bottom: 30px;
+  width: 100%;
 
   &:hover {
     transform: translate3d(0, -5px, 0);
     box-shadow: 0 1px 1px #ccc, 0 4px 4px #ccc;
   }
+`;
+
+const StyledArticle = styled.article<{ width: string }>`
+  display: inline-block;
+  width: ${props => props.width};
 `;
 
 const FeaturedImage = styled(Img)`
@@ -37,14 +46,50 @@ const FeaturedImage = styled(Img)`
   max-height: 100%;
 `;
 
-export const Card: FunctionComponent<CardProps> = ({title, path, featuredImage, content, width = '47%'}) => {
+const CardContent = styled.section`
+  padding: 40px;
+
+  p {
+    margin: 0;
+  }
+`;
+
+const CardMeta = styled.section`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: .8em;
+  opacity: .8;
+  line-height: 1em;
+`;
+
+const CardTitle = styled.h2`
+  margin-top: 0;
+  padding: 0;
+`;
+
+export const Card: FunctionComponent<CardProps> = ({title, meta, path, featuredImage, content, width = '47%'}) => {
   return (
-    <StyledCard to={path} width={width}>
-      {featuredImage &&
-      <FeaturedImage sizes={featuredImage.childImageSharp.sizes} />
-      }
-      {title}
-      <p dangerouslySetInnerHTML={{__html: content}}/>
-    </StyledCard>
+    <StyledArticle width={width}>
+      <StyledCard to={path}>
+        {featuredImage &&
+        <FeaturedImage sizes={featuredImage.childImageSharp.sizes}/>
+        }
+        <CardContent>
+          <header>
+            {meta &&
+            <CardMeta>
+              {meta.tag && <>{meta.tag}</>}
+              {meta.time &&
+              <time dateTime={meta.time}>{meta.timePretty}</time>
+              }
+            </CardMeta>
+            }
+            <CardTitle>{title}</CardTitle>
+          </header>
+          <p dangerouslySetInnerHTML={{__html: content}}/>
+        </CardContent>
+      </StyledCard>
+    </StyledArticle>
   );
 };
