@@ -8,8 +8,23 @@ export interface SiteMetadata {
       menu: MenuItem[];
       footerMenu: MenuItem[];
       search: boolean;
+      author: {
+        name: string;
+        description: string;
+        social: SocialChannels;
+      };
     };
   };
+}
+
+export interface SocialChannels {
+  facebook?: string;
+  twitter?: string;
+  linkedin?: string;
+  instagram?: string;
+  youtube?: string;
+  github?: string;
+  twitch?: string;
 }
 
 export interface MenuItem {
@@ -30,6 +45,7 @@ export interface Post {
     created: string;
     createdPretty: string;
     updated: string;
+    updatedPretty: string;
     featuredImage?: any;
   };
   html: string;

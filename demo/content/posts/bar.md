@@ -5,7 +5,7 @@ tags: ["JavaScript", "Node"]
 featuredImage: "../assets/images/test.jpg"
 excerpt: This is the best post I've ever written.
 created: 2019-07-20
-updated: 2019-07-20
+updated: 2019-07-21
 ---
 
 Implementing Selenium tests in JavaScript can get confusing, especially since many resources are either for different languages or out of date.  Even harder to find are guides on how to run these tests against BrowserStack (or similar services). For our [last project](https://github.com/wirecard/shopware-ee/tree/master/Tests/Selenium) we had to implement such tests; and, if you know how to do it, it's actually pretty simple.

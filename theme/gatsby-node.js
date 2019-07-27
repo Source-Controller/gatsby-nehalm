@@ -44,6 +44,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
               created
               createdPretty: created(formatString: "DD MMMM, YYYY")
               updated
+              updatedPretty: created(formatString: "DD MMMM, YYYY")
               featuredImage {
                 childImageSharp {
                   sizes(maxWidth: 630, quality: 90) {
@@ -67,7 +68,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     reporter.panic(result.errors);
   }
 
-  let tags    = [];
+  const tags  = [];
   const posts = result.data.allMarkdownRemark.edges.map(node => node.node);
 
   posts.forEach(post => {

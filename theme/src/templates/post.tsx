@@ -7,7 +7,10 @@ import Toc from "../components/toc";
 import Img from "gatsby-image";
 import ReadingProgress from "../components/reading-progress";
 import Theme from "../styles/theme";
-import {graphql, Link, StaticQuery, useStaticQuery} from "gatsby";
+import {Link} from "gatsby";
+import slugify from "slugify";
+import Bio from "../components/bio";
+import Comments from "../components/comments";
 
 interface PostTemplateProps {
   pathContext: {
@@ -79,8 +82,8 @@ const PostContent = styled.div`
 
 const TocWrapper = styled.div`
   position: sticky;
-  top: 102px;
-  padding-right: 30px;
+  top: 70px;
+  padding: 40px 30px 40px 0;
 `;
 
 const PostHeader = styled.header`
@@ -107,26 +110,41 @@ const PostTitle = styled.h1`
   padding: 0;
 `;
 
-const PostAddition = styled.div`
+const PostFooter = styled.footer`
+  background-color: #fafafa;
+  font-size: .8em;
+  color: #666;
+  padding: 40px;
+  line-height: 1em;
+
+  p {
+    margin: 5px 0;
+  }
+`;
+
+const FooterTagLink = styled(Link)`
+  color: #000 !important;
+  text-decoration: none;
+  border-bottom: 0 !important;
+`;
+
+const PostAddition = styled.section`
   background-color: #fff;
   border-top: 1px #e5eff5 solid;
   border-bottom: 1px #e5eff5 solid;
   z-index: 700;
   position: relative;
+  padding: 40px;
 `;
 
-const PostFooter = styled.footer`
+const PostAdditionContent = styled(Container)`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const PostTemplate: FunctionComponent<PostTemplateProps> = ({pathContext}) => {
   const post               = pathContext.post;
   const readingProgressRef = createRef<HTMLElement>();
-  // const relatedPosts       = useStaticQuery(graphql`
-  //   query RelatedPosts {
-  //   }
-  // `);
-  //
-  // console.log(relatedPosts);
 
   return (
     <Layout bigHeader={false}>
@@ -155,14 +173,33 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({pathContext}) => {
             }
             <StyledPost dangerouslySetInnerHTML={{__html: post.html}} className={`post`}/>
             <PostFooter>
-              footer
+              <p>
+                Published under&nbsp;
+                {post.frontmatter.tags.map((tag, index) => (
+                  <span key={index}>
+                    <FooterTagLink
+                      to={`/tag/${slugify(tag, {lower: true})}`}
+                    >
+                      {tag}
+                    </FooterTagLink>
+                    {post.frontmatter.tags.length > index + 1 && <>, </>}
+                  </span>
+                ))}
+                &nbsp;on <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>.
+              </p>
+              {post.frontmatter.updated !== post.frontmatter.created &&
+              <p>Last updated on <time dateTime={post.frontmatter.updated}>{post.frontmatter.updatedPretty}</time>.</p>
+              }
             </PostFooter>
           </article>
         </PostContent>
       </PostContainer>
       <PostAddition>
-        addition
+        <PostAdditionContent>
+          <Bio />
+        </PostAdditionContent>
       </PostAddition>
+      <Comments />
     </Layout>
   );
 };

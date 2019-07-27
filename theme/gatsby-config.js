@@ -34,7 +34,20 @@ module.exports = (themeOptions) => {
           path: '/foobar'
         }
       ],
-      search: true
+      search: true,
+      author: {
+        name: `Kevin`,
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at faucibus mauris. Sed accumsan nibh volutpat consectetur hendrerit. Proin quis pellentesque nulla. Duis placerat lacus non tempus efficitur.`,
+        social: {
+          facebook: ``,
+          twitter: `https://twitter.com/nehalist`,
+          linkedin: `https://www.linkedin.com/in/kevin-hirczy-7a9377106/`,
+          instagram: ``,
+          youtube: ``,
+          github: `https://github.com/nehalist`,
+          twitch: ``
+        }
+      }
     },
     plugins: [
       `gatsby-plugin-typescript`,
