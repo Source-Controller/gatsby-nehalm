@@ -2,8 +2,7 @@ import React, {FunctionComponent} from "react";
 import Layout from "../components/layout";
 import {graphql} from "gatsby";
 import {Post} from "../utils/models";
-import {Container} from "../components/common";
-import styled from "styled-components";
+import {Grid} from "../components/common";
 import {Card} from "../components/card";
 import Subheader from "../components/subheader";
 
@@ -15,26 +14,20 @@ interface ArchivePageProps {
   };
 }
 
-const PostsContainer = styled(Container)`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
-
 const ArchivePage: FunctionComponent<ArchivePageProps> = ({data}) => {
   const posts = data.allPosts.edges.map(node => node.node);
 
   return (
     <Layout bigHeader={false}>
       <Subheader title={`Archive`} subtitle={`${posts.length} posts`}/>
-      <PostsContainer>
+      <Grid>
         {posts.map((post, index) => (
           <Card
             title={post.frontmatter.title}
             path={post.frontmatter.path}
             featuredImage={post.frontmatter.featuredImage.childImageSharp}
             content={post.frontmatter.excerpt}
-            width={`31%`}
+            width={`100%`}
             key={index}
             meta={
               {
@@ -45,7 +38,7 @@ const ArchivePage: FunctionComponent<ArchivePageProps> = ({data}) => {
             }
           />
         ))}
-      </PostsContainer>
+      </Grid>
     </Layout>
   );
 };

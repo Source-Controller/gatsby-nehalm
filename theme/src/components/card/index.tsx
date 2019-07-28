@@ -1,10 +1,10 @@
-import React, {FunctionComponent} from "react";
+import React, {CSSProperties, FunctionComponent, ReactNode} from "react";
 import {Link} from "gatsby";
 import styled from "styled-components";
 import Img from "gatsby-image";
 
 export interface CardProps {
-  title: string;
+  title?: string;
   path: string;
   featuredImage?: any;
   content?: string;
@@ -16,6 +16,8 @@ export interface CardProps {
   };
   halfImage?: boolean;
   compact?: boolean;
+  style?: CSSProperties;
+  children?: ReactNode;
 }
 
 const StyledCard = styled(Link)`
@@ -26,6 +28,7 @@ const StyledCard = styled(Link)`
   transition: .5s all;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
   &:hover {
     transform: translate3d(0, -5px, 0);
@@ -33,16 +36,13 @@ const StyledCard = styled(Link)`
   }
 `;
 
-const StyledArticle = styled.article<{ width: string }>`
+const StyledArticle = styled.article`
   display: inline-block;
-  width: ${props => props.width};
-  margin-bottom: 30px;
 `;
 
 const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
   background-position: center;
   background-size: cover;
-  max-height: 100%;
   max-width: 100%;
   border-top-left-radius: 3px;
 
@@ -50,10 +50,11 @@ const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
     width: 50%;
     float: left;
     margin-right: 30px;
-    height: 320px;
+    height: 100%;
     border-bottom-left-radius: 3px;
   ` : `
     height: 190px;
+    max-height: 190px;
     width: 100%;
     border-top-right-radius: 3px;
   `};
@@ -91,12 +92,13 @@ export const Card: FunctionComponent<CardProps> = ({
                                                      path,
                                                      featuredImage,
                                                      content,
-                                                     width = '47%',
                                                      halfImage = false,
                                                      compact = false,
+                                                     style,
+                                                     children
                                                    }) => {
   return (
-    <StyledArticle width={width}>
+    <StyledArticle style={style}>
       <StyledCard to={path}>
         {/* TODO: Oh boy... */}
         {(featuredImage && featuredImage.fixed) &&
@@ -106,6 +108,7 @@ export const Card: FunctionComponent<CardProps> = ({
         <FeaturedImage sizes={featuredImage.sizes} halfImage={halfImage}/>
         }
         <CardContent compact={compact}>
+          {children}
           <header>
             {meta &&
             <CardMeta>
@@ -115,7 +118,9 @@ export const Card: FunctionComponent<CardProps> = ({
               }
             </CardMeta>
             }
+            {title &&
             <CardTitle>{title}</CardTitle>
+            }
           </header>
           {content &&
           <p dangerouslySetInnerHTML={{__html: content}}/>

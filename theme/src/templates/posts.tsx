@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from "react";
 import Layout from "../components/layout";
-import {Container} from "../components/common";
+import {Container, Grid} from "../components/common";
 import {Post} from "../utils/models";
 import {Card} from "../components/card";
 import styled from "styled-components";
@@ -19,10 +19,10 @@ const HomeContainer = styled(Container)`
   justify-content: space-between;
 `;
 
-const PostsContainer = styled(Container)`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+const PostsContainer = styled(Grid)`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "latest latest" ". .";
   width: 915px;
   margin-left: 0;
   margin-right: 0;
@@ -35,8 +35,7 @@ const Sidebar = styled.aside`
 `;
 
 const ArchiveLinkWrapper = styled.div`
-  width: 100%;
-  display: block;
+  grid-column: 1 / -1;
   text-align: center;
 `;
 
@@ -66,7 +65,6 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
               featuredImage={post.frontmatter.featuredImage.childImageSharp}
               content={post.frontmatter.excerpt}
               key={index}
-              width={index === 0 ? '100%' : '48%'}
               meta={
                 {
                   time: post.frontmatter.created,
@@ -74,6 +72,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
                   tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null,
                 }
               }
+              style={{gridArea: index === 0 ? 'latest' : undefined}}
               halfImage={index === 0}
             />
           ))}

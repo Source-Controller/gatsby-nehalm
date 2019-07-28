@@ -44,6 +44,16 @@ const TagName = styled.span`
   display: block;
 `;
 
+const TagArchiveLinkWrapper = styled.div`
+  display: block;
+  margin-top: 20px;
+`;
+
+const TagArchiveLink = styled(Link)`
+  font-style: italic;
+  font-size: .8em;
+`;
+
 const TagList: FunctionComponent = () => {
   const tagsQuery = useStaticQuery<{ allTags: { nodes: Tag[] } }>(graphql`
     query Tags {
@@ -85,6 +95,9 @@ const TagList: FunctionComponent = () => {
           );
         })}
       </StyledTagList>
+      <TagArchiveLinkWrapper>
+        <TagArchiveLink to={`/tags`}>See all tags</TagArchiveLink>
+      </TagArchiveLinkWrapper>
     </TagContainer>
   );
 };

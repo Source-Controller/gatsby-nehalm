@@ -2,9 +2,8 @@ import React, {FunctionComponent} from "react";
 import Layout from "../components/layout";
 import {graphql} from "gatsby";
 import {Post, Tag} from "../utils/models";
-import {Container} from "../components/common";
+import {Grid} from "../components/common";
 import Subheader from "../components/subheader";
-import styled from "styled-components";
 import {Card} from "../components/card";
 
 interface TagTemplateProps {
@@ -16,12 +15,6 @@ interface TagTemplateProps {
   };
 }
 
-const PostsContainer = styled(Container)`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
-
 const TagTemplate: FunctionComponent<TagTemplateProps> = ({data}) => {
   const tag   = data.tag;
   const posts = data.posts.edges.map(node => node.node);
@@ -29,14 +22,14 @@ const TagTemplate: FunctionComponent<TagTemplateProps> = ({data}) => {
   return (
     <Layout bigHeader={false}>
       <Subheader title={tag.name} subtitle={`${posts.length} posts`} backgroundColor={tag.color}/>
-      <PostsContainer>
+      <Grid>
         {posts.map((post, index) => (
           <Card
             title={post.frontmatter.title}
             path={post.frontmatter.path}
             featuredImage={post.frontmatter.featuredImage.childImageSharp}
             content={post.frontmatter.excerpt}
-            width={`31%`}
+            width={`100%`}
             key={index}
             meta={
               {
@@ -47,7 +40,7 @@ const TagTemplate: FunctionComponent<TagTemplateProps> = ({data}) => {
             }
           />
         ))}
-      </PostsContainer>
+      </Grid>
     </Layout>
   );
 };
