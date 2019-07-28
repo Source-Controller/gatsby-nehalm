@@ -6,6 +6,7 @@ import {Card} from "../components/card";
 import styled from "styled-components";
 import TagList from "../components/tag-list";
 import {Link} from "gatsby";
+import SidebarContent from "../components/sidebar-content";
 
 interface PostsPageProps {
   pathContext: {
@@ -80,7 +81,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
           </ArchiveLinkWrapper>
         </PostsContainer>
         <Sidebar>
-          this is content... content is so delicisio... yes yes.
+          <SidebarContent />
         </Sidebar>
       </HomeContainer>
       <TagList />

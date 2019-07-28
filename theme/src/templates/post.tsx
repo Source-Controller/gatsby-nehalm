@@ -145,6 +145,11 @@ const PostAdditionContent = styled(Container)`
   justify-content: space-between;
 `;
 
+const BioWrapper = styled.div`
+  width: 50%;
+  margin: auto;
+`;
+
 const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext}) => {
   const post               = pathContext.post;
   const readingProgressRef = createRef<HTMLElement>();
@@ -200,7 +205,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext})
       </PostContainer>
       <PostAddition>
         <PostAdditionContent>
-          <Bio/>
+          <BioWrapper>
+            <Bio textAlign={`center`} />
+          </BioWrapper>
         </PostAdditionContent>
       </PostAddition>
       <Comments/>

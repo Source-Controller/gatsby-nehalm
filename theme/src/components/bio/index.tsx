@@ -1,26 +1,26 @@
-import React, {FunctionComponent} from "react";
+import React, {CSSProperties, FunctionComponent} from "react";
 import styled from "styled-components";
-import icon from "../../../assets/gatsby-icon.png";
 import {graphql, useStaticQuery} from "gatsby";
 import {SiteMetadata} from "../../utils/models";
 import SocialChannelList from "../social-channel-list";
+import Avatar from "../avatar";
 
-const BioImage = styled.img`
-  max-width: 55px;
-  border-radius: 100%;
-`;
+interface BioProps {
+  textAlign: 'left' | 'center' | 'right' | 'justify';
+  avatarStyle?: CSSProperties;
+}
 
-const StyledBio = styled.section`
-  width: 50%;
+const StyledBio = styled.section<Pick<BioProps, 'textAlign'>>`
   margin: auto;
-  text-align: center;
+  text-align: ${props => props.textAlign};
+  width: 100%;
 `;
 
 const AuthorDescription = styled.p`
   margin: 10px 0 13px;
 `;
 
-const Bio: FunctionComponent = () => {
+const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle}) => {
   const metadata = useStaticQuery<SiteMetadata>(graphql`
     query MetadataQuery {
       site {
@@ -46,8 +46,8 @@ const Bio: FunctionComponent = () => {
   const author = metadata.site.siteMetadata.author;
 
   return (
-    <StyledBio>
-      <BioImage src={icon} alt={author.name}/>
+    <StyledBio textAlign={textAlign}>
+      <Avatar alt={author.name} style={avatarStyle} />
       <AuthorDescription>
         {author.description}
       </AuthorDescription>
