@@ -171,7 +171,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext})
             <PostHeader>
               <PostMeta>
                 {post.frontmatter.tags.length > 0 &&
-                <Link to={`#`}>{post.frontmatter.tags[0]}</Link>
+                <Link to={`/tag/${slugify(post.frontmatter.tags[0], {lower: true})}`}>{post.frontmatter.tags[0]}</Link>
                 }
                 <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>
               </PostMeta>
@@ -206,7 +206,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext})
       <PostAddition>
         <PostAdditionContent>
           <BioWrapper>
-            <Bio textAlign={`center`} />
+            <Bio textAlign={`center`}/>
           </BioWrapper>
         </PostAdditionContent>
       </PostAddition>

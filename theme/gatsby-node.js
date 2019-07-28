@@ -78,6 +78,13 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
           }
         }
       }
+      tags: allTags {
+        edges {
+          node {
+            name
+          }
+        }
+      }
     }
   `);
 
@@ -88,6 +95,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   const tags  = [];
   const posts = result.data.posts.edges.map(node => node.node);
   const pages = result.data.pages.edges.map(node => node.node);
+  const availableTags = result.data.tags.edges.map(node => node.node).map(t => t.name);
 
   posts.forEach(post => {
     if (post.frontmatter.tags) {
@@ -115,6 +123,9 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   });
 
   [...new Set(tags)].forEach(tag => {
+    if (availableTags.indexOf(tag) < 0) {
+      reporter.panic(`Tag ${tag} is not registered in the tags.yml`);
+    }
     const slugified = slugify(tag, { lower: true });
     actions.createPage({
       path: `/tag/${slugified}`,

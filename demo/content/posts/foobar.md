@@ -1,7 +1,7 @@
 ---
 title: Foobar!
 path: "/foobar"
-tags: ["Vue", "Symfony"]
+tags: ["Whatever"]
 featuredImage: "../assets/images/test.jpg"
 excerpt: Ohhhh boyyyyyyy....
 created: 2019-07-20

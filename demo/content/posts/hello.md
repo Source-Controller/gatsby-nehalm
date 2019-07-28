@@ -1,7 +1,7 @@
 ---
 title: The mighiest of them all
 path: "/mighty-post"
-tags: ["I have no idea"]
+tags: ["JavaScript"]
 featuredImage: "../assets/images/test.jpg"
 excerpt: This is a post about magic. It's about I don't knows and even the I have no ideas. It's great, believe me. You know why? Because it is written.
 created: 2019-07-27
