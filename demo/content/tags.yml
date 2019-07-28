@@ -1,6 +1,6 @@
 - name: JavaScript
   color: "#ff0000"
-  icon: ./assets/images/typescript.svg
+  icon: ./assets/images/javascript.svg
   featured: true
 - name: Whatever
   color: #00ffee

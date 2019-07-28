@@ -98,6 +98,7 @@ export const Card: FunctionComponent<CardProps> = ({
   return (
     <StyledArticle width={width}>
       <StyledCard to={path}>
+        {/* TODO: Oh boy... */}
         {(featuredImage && featuredImage.fixed) &&
         <FeaturedImage fixed={featuredImage.fixed} halfImage={halfImage}/>
         }
