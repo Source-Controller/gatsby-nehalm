@@ -4,6 +4,7 @@ import {Container} from "../components/common";
 import {Post} from "../utils/models";
 import {Card} from "../components/card";
 import styled from "styled-components";
+import TagList from "../components/tag-list";
 
 interface PostsPageProps {
   pathContext: {
@@ -50,7 +51,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
                 {
                   time: post.frontmatter.created,
                   timePretty: post.frontmatter.createdPretty,
-                  tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null
+                  tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null,
                 }
               }
             />
@@ -60,6 +61,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
           this is content... content is so delicisio... yes yes.
         </Sidebar>
       </HomeContainer>
+      <TagList />
     </Layout>
   );
 };

@@ -1,18 +1,21 @@
 import React, {createRef, FunctionComponent} from "react";
 import Layout from "../components/layout";
-import {Post} from "../utils/models";
+import {Post, Tag} from "../utils/models";
 import {Container} from "../components/common";
 import styled from "styled-components";
 import Toc from "../components/toc";
 import Img from "gatsby-image";
 import ReadingProgress from "../components/reading-progress";
 import Theme from "../styles/theme";
-import {Link} from "gatsby";
+import {graphql, Link} from "gatsby";
 import slugify from "slugify";
 import Bio from "../components/bio";
 import Comments from "../components/comments";
 
 interface PostTemplateProps {
+  data: {
+    primaryTag: Tag | null;
+  };
   pathContext: {
     post: Post;
   };
@@ -142,13 +145,14 @@ const PostAdditionContent = styled(Container)`
   justify-content: space-between;
 `;
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = ({pathContext}) => {
+const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext}) => {
   const post               = pathContext.post;
   const readingProgressRef = createRef<HTMLElement>();
+  const primaryTag         = data.primaryTag;
 
   return (
     <Layout bigHeader={false}>
-      <ReadingProgress target={readingProgressRef}/>
+      <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : null}/>
       <PostContainer>
         {post.headings.find(h => h.depth > 1) &&
         <LeftSidebar>
@@ -196,12 +200,21 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({pathContext}) => {
       </PostContainer>
       <PostAddition>
         <PostAdditionContent>
-          <Bio />
+          <Bio/>
         </PostAdditionContent>
       </PostAddition>
-      <Comments />
+      <Comments/>
     </Layout>
   );
 };
 
 export default PostTemplate;
+
+export const query = graphql`
+  query PrimaryTag($primaryTag: String!) {
+    primaryTag: tags(name: { eq: $primaryTag }) {
+      name
+      color
+    }
+  }
+`;

@@ -75,11 +75,13 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     if (post.frontmatter.tags) {
       tags.push(...post.frontmatter.tags);
     }
+    const primaryTag = post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null;
     actions.createPage({
       path: post.frontmatter.path,
       component: require.resolve(`./src/templates/post.tsx`),
       context: {
-        post: post
+        post: post,
+        primaryTag: primaryTag
       }
     });
   });

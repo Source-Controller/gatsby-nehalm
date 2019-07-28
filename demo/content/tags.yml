@@ -1,4 +1,8 @@
 - name: JavaScript
   color: "#ff0000"
-  icon: ~
-  featured: false
+  icon: ./assets/images/typescript.svg
+  featured: true
+- name: Whatever
+  color: #00ffee
+  icon: ./assets/images/nehalist_IconRound.png
+  featured: true

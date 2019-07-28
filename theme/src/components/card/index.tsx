@@ -12,7 +12,7 @@ export interface CardProps {
   meta?: {
     time: string;
     timePretty: string;
-    tag: string;
+    tag: string | null;
   };
 }
 

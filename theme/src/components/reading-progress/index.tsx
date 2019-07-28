@@ -4,7 +4,7 @@ import Theme from "../../styles/theme";
 
 interface ReadingProgressProps {
   target: RefObject<HTMLElement>;
-  color?: string;
+  color: string | null;
 }
 
 const ReadingProgressBar = styled.div<{ color?: string; }>`
