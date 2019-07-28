@@ -24,7 +24,6 @@ const PostsContainer = styled(Container)`
 const ArchivePage: FunctionComponent<ArchivePageProps> = ({data}) => {
   const posts = data.allMarkdownRemark.edges.map(node => node.node);
 
-  console.log(data);
   return (
     <Layout bigHeader={false}>
       <Subheader title={`Archive`} subtitle={`${posts.length} posts`}/>
@@ -33,10 +32,17 @@ const ArchivePage: FunctionComponent<ArchivePageProps> = ({data}) => {
           <Card
             title={post.frontmatter.title}
             path={post.frontmatter.path}
-            featuredImage={post.frontmatter.featuredImage.childImageSharp.sizes}
+            featuredImage={post.frontmatter.featuredImage.childImageSharp}
             content={post.frontmatter.excerpt}
             width={`31%`}
             key={index}
+            meta={
+              {
+                time: post.frontmatter.created,
+                timePretty: post.frontmatter.createdPretty,
+                tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null,
+              }
+            }
           />
         ))}
       </PostsContainer>
@@ -57,6 +63,7 @@ export const query = graphql`
             path
             tags
             created
+            createdPretty: created(formatString: "DD MMMM, YYYY")
             excerpt
             featuredImage {
               childImageSharp {

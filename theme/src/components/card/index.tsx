@@ -44,6 +44,7 @@ const FeaturedImage = styled(Img)`
   background-position: center;
   background-size: cover;
   max-height: 100%;
+  max-width: 100%;
 `;
 
 const CardContent = styled.section`
@@ -72,8 +73,11 @@ export const Card: FunctionComponent<CardProps> = ({title, meta, path, featuredI
   return (
     <StyledArticle width={width}>
       <StyledCard to={path}>
-        {featuredImage &&
-        <FeaturedImage sizes={featuredImage.childImageSharp.sizes}/>
+        {(featuredImage && featuredImage.fixed) &&
+        <FeaturedImage fixed={featuredImage.fixed}/>
+        }
+        {(featuredImage && featuredImage.sizes) &&
+        <FeaturedImage sizes={featuredImage.sizes}/>
         }
         <CardContent>
           <header>

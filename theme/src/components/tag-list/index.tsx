@@ -29,13 +29,10 @@ const StyledTagList = styled.ul`
 
 const StyledTag = styled.li`
   margin: 0 35px;
+  transition: .5s all;
 
-  *:not(p) {
-    transition: .5s all;
-
-    &:hover {
-      transform: scale(1.04);
-    }
+  &:hover {
+    transform: scale(1.04);
   }
 `;
 
@@ -45,6 +42,16 @@ const TagIcon = styled.img`
 
 const TagName = styled.span`
   display: block;
+`;
+
+const TagArchiveLinkWrapper = styled.div`
+  display: block;
+  margin-top: 20px;
+`;
+
+const TagArchiveLink = styled(Link)`
+  font-style: italic;
+  font-size: .8em;
 `;
 
 const TagList: FunctionComponent = () => {
@@ -88,6 +95,9 @@ const TagList: FunctionComponent = () => {
           );
         })}
       </StyledTagList>
+      <TagArchiveLinkWrapper>
+        <TagArchiveLink to={`/tags`}>See all tags</TagArchiveLink>
+      </TagArchiveLinkWrapper>
     </TagContainer>
   );
 };

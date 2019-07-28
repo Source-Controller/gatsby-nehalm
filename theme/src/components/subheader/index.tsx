@@ -15,14 +15,12 @@ const StyledSubheader = styled.div`
   margin-bottom: 30px;
 `;
 
-const SubheaderContent = styled(Container)`
-`;
-
 const SubheaderTitle = styled.h1`
   font-size: 1.2em;
   font-weight: bold;
   color: #fff;
   margin: 0;
+  line-height: 1em;
 `;
 
 const SubheaderSubtitle = styled.small`
@@ -34,12 +32,12 @@ const SubheaderSubtitle = styled.small`
 const Subheader: FunctionComponent<SubheaderProps> = ({title, subtitle}) => {
   return (
     <StyledSubheader>
-      <SubheaderContent>
+      <Container>
         <SubheaderTitle>
           {title}
           <SubheaderSubtitle>{subtitle}</SubheaderSubtitle>
         </SubheaderTitle>
-      </SubheaderContent>
+      </Container>
     </StyledSubheader>
   );
 };
