@@ -14,6 +14,7 @@ export interface CardProps {
     timePretty: string;
     tag: string | null;
   };
+  halfImage?: boolean;
 }
 
 const StyledCard = styled(Link)`
@@ -37,15 +38,23 @@ const StyledArticle = styled.article<{ width: string }>`
   margin-bottom: 30px;
 `;
 
-const FeaturedImage = styled(Img)`
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  width: 100%;
-  height: 190px;
+const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
   background-position: center;
   background-size: cover;
   max-height: 100%;
   max-width: 100%;
+
+  ${props => props.halfImage ? `
+    width: 50%;
+    float: left;
+    margin-right: 30px;
+    height: 320px;
+  ` : `
+    height: 190px;
+    width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  `};
 `;
 
 const CardContent = styled.section`
@@ -70,15 +79,23 @@ const CardTitle = styled.h2`
   padding: 0;
 `;
 
-export const Card: FunctionComponent<CardProps> = ({title, meta, path, featuredImage, content, width = '47%'}) => {
+export const Card: FunctionComponent<CardProps> = ({
+                                                     title,
+                                                     meta,
+                                                     path,
+                                                     featuredImage,
+                                                     content,
+                                                     width = '47%',
+                                                     halfImage = false,
+                                                   }) => {
   return (
     <StyledArticle width={width}>
       <StyledCard to={path}>
         {(featuredImage && featuredImage.fixed) &&
-        <FeaturedImage fixed={featuredImage.fixed}/>
+        <FeaturedImage fixed={featuredImage.fixed} halfImage={halfImage}/>
         }
         {(featuredImage && featuredImage.sizes) &&
-        <FeaturedImage sizes={featuredImage.sizes}/>
+        <FeaturedImage sizes={featuredImage.sizes} halfImage={halfImage}/>
         }
         <CardContent>
           <header>

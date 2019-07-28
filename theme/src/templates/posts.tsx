@@ -74,6 +74,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
                   tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null,
                 }
               }
+              halfImage={index === 0}
             />
           ))}
           <ArchiveLinkWrapper>
