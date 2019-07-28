@@ -50,7 +50,7 @@ const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
     width: 50%;
     float: left;
     margin-right: 30px;
-    height: 100%;
+    height: 320px;
     border-bottom-left-radius: 3px;
   ` : `
     height: 190px;
