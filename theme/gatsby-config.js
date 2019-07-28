@@ -37,7 +37,7 @@ module.exports = (themeOptions) => {
       search: true,
       author: {
         name: `Kevin`,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at faucibus mauris. Sed accumsan nibh volutpat consectetur hendrerit. Proin quis pellentesque nulla. Duis placerat lacus non tempus efficitur.`,
+        description: `<strong>Lorem</strong> ipsum dolor sit amet, consectetur adipiscing elit. Sed at faucibus mauris. Sed accumsan nibh volutpat consectetur hendrerit. Proin quis pellentesque nulla. Duis placerat lacus non tempus efficitur.`,
         social: {
           facebook: ``,
           twitter: `https://twitter.com/nehalist`,

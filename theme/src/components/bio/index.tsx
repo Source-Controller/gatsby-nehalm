@@ -48,9 +48,7 @@ const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle}) =
   return (
     <StyledBio textAlign={textAlign}>
       <Avatar alt={author.name} style={avatarStyle} />
-      <AuthorDescription>
-        {author.description}
-      </AuthorDescription>
+      <AuthorDescription dangerouslySetInnerHTML={{__html: author.description}}/>
       <SocialChannelList channels={author.social}/>
     </StyledBio>
   );
