@@ -5,6 +5,7 @@ import {Post} from "../utils/models";
 import {Card} from "../components/card";
 import styled from "styled-components";
 import TagList from "../components/tag-list";
+import {Link} from "gatsby";
 
 interface PostsPageProps {
   pathContext: {
@@ -32,6 +33,24 @@ const Sidebar = styled.aside`
   padding-top: 30px;
 `;
 
+const ArchiveLinkWrapper = styled.div`
+  width: 100%;
+  display: block;
+  text-align: center;
+`;
+
+const ArchiveLink = styled(Link)`
+  font-size: .8em;
+  padding: 10px;
+  border-radius: .3em;
+  transition: background-color .5s;
+  background-color: #f2f2f2;
+
+  &:hover {
+    background-color: #e6e6e6;
+  }
+`;
+
 const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
   const posts = pathContext.posts;
 
@@ -56,6 +75,9 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
               }
             />
           ))}
+          <ArchiveLinkWrapper>
+            <ArchiveLink to={`/archive`}>More posts</ArchiveLink>
+          </ArchiveLinkWrapper>
         </PostsContainer>
         <Sidebar>
           this is content... content is so delicisio... yes yes.
