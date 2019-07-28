@@ -161,9 +161,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext})
       <PostContainer>
         {post.headings.find(h => h.depth > 1) &&
         <LeftSidebar>
-            <TocWrapper>
-                <Toc/>
-            </TocWrapper>
+          <TocWrapper>
+            <Toc/>
+          </TocWrapper>
         </LeftSidebar>
         }
         <PostContent>
