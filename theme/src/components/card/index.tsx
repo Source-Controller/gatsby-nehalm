@@ -22,8 +22,8 @@ const StyledCard = styled(Link)`
   border-radius: 3px;
   box-shadow: 0 1px 1px #e6e6e6, 0 2px 4px #e6e6e6;
   transition: .5s all;
-  margin-bottom: 30px;
   width: 100%;
+  height: 100%;
 
   &:hover {
     transform: translate3d(0, -5px, 0);
@@ -34,6 +34,7 @@ const StyledCard = styled(Link)`
 const StyledArticle = styled.article<{ width: string }>`
   display: inline-block;
   width: ${props => props.width};
+  margin-bottom: 30px;
 `;
 
 const FeaturedImage = styled(Img)`
