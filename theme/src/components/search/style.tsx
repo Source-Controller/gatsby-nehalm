@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link} from "gatsby";
 
 export const SearchBox = styled.div<{ readonly open: boolean }>`
   display: ${props => props.open ? 'block' : 'none'};
@@ -47,4 +48,20 @@ export const SearchResults = styled.ul`
   max-height: 50vh;
   overflow-y: auto;
   white-space: pre-wrap;
+`;
+
+export const SearchResult = styled.li<{ selected: boolean }>`
+  line-height: 1.4em;
+
+  ${props => props.selected && `
+    background-color: #f2f2f2;
+  `};
+`;
+
+export const ResultLink = styled(Link)`
+  display: block;
+  padding: 15px;
+`;
+export const ResultTitle = styled.h4`
+  margin: 0;
 `;

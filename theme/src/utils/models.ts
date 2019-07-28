@@ -39,10 +39,6 @@ export interface MenuItem {
   path: string;
 }
 
-export interface StyleProps {
-  className?: string;
-}
-
 export interface Post {
   frontmatter: {
     title: string;
