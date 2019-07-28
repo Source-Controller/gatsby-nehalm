@@ -43,16 +43,17 @@ const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
   background-size: cover;
   max-height: 100%;
   max-width: 100%;
+  border-top-left-radius: 3px;
 
   ${props => props.halfImage ? `
     width: 50%;
     float: left;
     margin-right: 30px;
     height: 320px;
+    border-bottom-left-radius: 3px;
   ` : `
     height: 190px;
     width: 100%;
-    border-top-left-radius: 3px;
     border-top-right-radius: 3px;
   `};
 `;
