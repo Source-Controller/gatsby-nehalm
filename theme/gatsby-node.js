@@ -29,7 +29,24 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
   const result = await graphql(`
     query {
-      allMarkdownRemark(limit: ${postsPerPage}, sort: {fields: frontmatter___created, order: DESC}) {
+      pages: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/(pages)/.*\\\\.md$/" } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              path
+            }
+            html
+          }
+        }
+      }
+      posts: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
+        limit: ${postsPerPage},
+        sort: { fields: frontmatter___created, order: DESC }
+      ) {
         edges {
           node {
             id
@@ -69,7 +86,8 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   }
 
   const tags  = [];
-  const posts = result.data.allMarkdownRemark.edges.map(node => node.node);
+  const posts = result.data.posts.edges.map(node => node.node);
+  const pages = result.data.pages.edges.map(node => node.node);
 
   posts.forEach(post => {
     if (post.frontmatter.tags) {
@@ -82,6 +100,16 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       context: {
         post: post,
         primaryTag: primaryTag
+      }
+    });
+  });
+
+  pages.forEach(page => {
+    actions.createPage({
+      path: page.frontmatter.path,
+      component: require.resolve(`./src/templates/page.tsx`),
+      context: {
+        page
       }
     });
   });

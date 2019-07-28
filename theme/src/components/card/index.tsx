@@ -7,7 +7,7 @@ export interface CardProps {
   title: string;
   path: string;
   featuredImage?: any;
-  content: string;
+  content?: string;
   width?: string;
   meta?: {
     time: string;
@@ -15,6 +15,7 @@ export interface CardProps {
     tag: string | null;
   };
   halfImage?: boolean;
+  compact?: boolean;
 }
 
 const StyledCard = styled(Link)`
@@ -58,11 +59,15 @@ const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
   `};
 `;
 
-const CardContent = styled.section`
-  padding: 40px;
+const CardContent = styled.section<{ compact: boolean }>`
+  padding: ${props => props.compact ? '10px' : '40px'};
 
   p {
-    margin: 0;
+    margin: 15px 0;
+  }
+
+  h2 {
+    font-size: 1.2em;
   }
 `;
 
@@ -76,7 +81,7 @@ const CardMeta = styled.section`
 `;
 
 const CardTitle = styled.h2`
-  margin-top: 0;
+  margin: 0;
   padding: 0;
 `;
 
@@ -88,6 +93,7 @@ export const Card: FunctionComponent<CardProps> = ({
                                                      content,
                                                      width = '47%',
                                                      halfImage = false,
+                                                     compact = false,
                                                    }) => {
   return (
     <StyledArticle width={width}>
@@ -98,7 +104,7 @@ export const Card: FunctionComponent<CardProps> = ({
         {(featuredImage && featuredImage.sizes) &&
         <FeaturedImage sizes={featuredImage.sizes} halfImage={halfImage}/>
         }
-        <CardContent>
+        <CardContent compact={compact}>
           <header>
             {meta &&
             <CardMeta>
@@ -110,7 +116,9 @@ export const Card: FunctionComponent<CardProps> = ({
             }
             <CardTitle>{title}</CardTitle>
           </header>
+          {content &&
           <p dangerouslySetInnerHTML={{__html: content}}/>
+          }
         </CardContent>
       </StyledCard>
     </StyledArticle>

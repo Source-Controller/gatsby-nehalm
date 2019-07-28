@@ -56,6 +56,27 @@ module.exports = (themeOptions) => {
       {
         resolve: `gatsby-source-filesystem`,
         options: {
+          name: 'pages',
+          path: themeOptions.pagesPath || 'content/pages'
+        }
+      },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: 'posts',
+          path: themeOptions.postsPath || 'content/posts'
+        }
+      },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: 'assets',
+          path: themeOptions.assetPath || 'content/assets'
+        }
+      },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
           name: 'content',
           path: themeOptions.contentPath || 'content'
         }

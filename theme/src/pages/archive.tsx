@@ -9,7 +9,7 @@ import Subheader from "../components/subheader";
 
 interface ArchivePageProps {
   data: {
-    allMarkdownRemark: {
+    allPosts: {
       edges: Array<{ node: Post }>;
     };
   };
@@ -22,7 +22,7 @@ const PostsContainer = styled(Container)`
 `;
 
 const ArchivePage: FunctionComponent<ArchivePageProps> = ({data}) => {
-  const posts = data.allMarkdownRemark.edges.map(node => node.node);
+  const posts = data.allPosts.edges.map(node => node.node);
 
   return (
     <Layout bigHeader={false}>
@@ -54,28 +54,34 @@ export default ArchivePage;
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: {fields: frontmatter___created, order: DESC}) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            path
-            tags
-            created
-            createdPretty: created(formatString: "DD MMMM, YYYY")
-            excerpt
-            featuredImage {
-              childImageSharp {
-                fixed(width: 400, height: 250) {
-                  ...GatsbyImageSharpFixed
+    allPosts: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
+        sort: { fields: frontmatter___created, order: DESC }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+              path
+              tags
+              excerpt
+              created
+              createdPretty: created(formatString: "DD MMMM, YYYY")
+              featuredImage {
+                childImageSharp {
+                  sizes(maxWidth: 800, quality: 100) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
                 }
               }
             }
           }
-          html
         }
       }
-    }
   }
 `;

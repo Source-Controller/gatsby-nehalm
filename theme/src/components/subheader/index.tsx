@@ -5,10 +5,13 @@ import {Container} from "../common";
 interface SubheaderProps {
   title: string;
   subtitle?: string;
+  backgroundColor?: string;
+  textColor?: string;
 }
 
-const StyledSubheader = styled.div`
-  background-color: #000;
+const StyledSubheader = styled.div<Pick<SubheaderProps, 'backgroundColor' | 'textColor'>>`
+  background-color: ${props => props.backgroundColor ? props.backgroundColor : '#000'};
+  color: ${props => props.textColor ? props.textColor : '#fff'};
   display: flex;
   align-items: center;
   height: 90px;
@@ -29,9 +32,9 @@ const SubheaderSubtitle = styled.small`
   opacity: .9;
 `;
 
-const Subheader: FunctionComponent<SubheaderProps> = ({title, subtitle}) => {
+const Subheader: FunctionComponent<SubheaderProps> = ({title, subtitle, backgroundColor, textColor}) => {
   return (
-    <StyledSubheader>
+    <StyledSubheader backgroundColor={backgroundColor} textColor={textColor}>
       <Container>
         <SubheaderTitle>
           {title}

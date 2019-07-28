@@ -54,3 +54,11 @@ export interface Post {
   html: string;
   headings: Array<{ depth: number }>;
 }
+
+export interface Page {
+  frontmatter: {
+    title: string;
+    path: string;
+  };
+  html: string;
+}
