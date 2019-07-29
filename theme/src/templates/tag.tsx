@@ -6,6 +6,7 @@ import {Grid} from "../components/common";
 import Subheader from "../components/subheader";
 import {Card} from "../components/card";
 import SEO from "../components/seo";
+import Theme from "../styles/theme";
 
 interface TagTemplateProps {
   data: {
@@ -18,8 +19,17 @@ interface TagTemplateProps {
 }
 
 const TagTemplate: FunctionComponent<TagTemplateProps> = ({data, location}) => {
-  const tag   = data.tag;
+  let tag     = data.tag;
   const posts = data.posts.edges.map(node => node.node);
+
+  if (! tag && posts.length > 0) {
+    tag = {
+      name: posts[0].frontmatter.tags[0],
+      color: Theme.layout.primaryColor,
+      icon: null,
+      featured: false,
+    };
+  }
 
   return (
     <Layout bigHeader={false}>
