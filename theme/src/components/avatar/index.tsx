@@ -1,19 +1,32 @@
 import React, {CSSProperties, FunctionComponent} from "react";
-import avatar from "../../../assets/nehalist-gatsby.png";
 import styled from "styled-components";
+import {graphql, useStaticQuery} from "gatsby";
+import Img from "gatsby-image";
 
 interface AvatarProps {
   alt: string;
   style?: CSSProperties;
 }
 
-const StyledAvatar = styled.img`
+const StyledAvatar = styled(Img)<AvatarProps>`
   max-width: 55px;
   border-radius: 100%;
 `;
 
 const Avatar: FunctionComponent<AvatarProps> = ({alt, style}) => {
-  return <StyledAvatar src={avatar} alt={alt} style={style} />;
+  const logo = useStaticQuery(graphql`
+    query {
+      file(sourceInstanceName: {eq: "themeAssets"}, name: {eq: "nehalist-gatsby"}) {
+        childImageSharp {
+          fixed(width: 55, height: 55) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
+
+  return <StyledAvatar fixed={logo.file.childImageSharp.fixed} alt={alt} style={style} />;
 };
 
 export default Avatar;
