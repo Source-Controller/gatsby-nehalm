@@ -1,14 +1,14 @@
 import React, {FunctionComponent} from "react";
-import logo from "../../../assets/nehalist-gatsby.png";
 import styled from "styled-components";
-import {Link} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
 import Theme from "../../styles/theme";
+import Img from "gatsby-image";
 
 interface LogoProps {
   title: string;
 }
 
-const LogoImage = styled.img`
+const LogoImage = styled(Img)`
   max-height: 30px;
   width: 30px;
   margin-right: 45px;
@@ -24,7 +24,24 @@ const HomeLink = styled(Link)`
 `;
 
 const Logo: FunctionComponent<LogoProps> = ({title}) => {
-  return <HomeLink to={`/`}><LogoImage src={logo} alt={title}/></HomeLink>;
-};
+  const logo = useStaticQuery(graphql`
+    query {
+      file(sourceInstanceName: {eq: "themeAssets"}, name: {eq: "nehalist-gatsby"}) {
+        childImageSharp {
+          fixed(width: 30, height: 30) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <HomeLink to={`/`}>
+      <LogoImage fixed={logo.file.childImageSharp.fixed} alt={title}/>
+    </HomeLink>
+  );
+}
+;
 
 export default Logo;
