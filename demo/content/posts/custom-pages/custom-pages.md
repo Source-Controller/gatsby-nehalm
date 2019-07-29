@@ -16,9 +16,9 @@ The basic structure for pages is:
 
 ```typescript jsx
 import React, {FunctionComponent} from "react";
-import Layout from "gatsby-theme-nehalem/src/components/layout";
-import SEO from "gatsby-theme-nehalem/src/components/seo";
-import Container from "gatsby-theme-nehalem/src/components/common";
+import Layout from "@nehalist/gatsby-theme-nehalem/src/components/layout";
+import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
+import Container from "@nehalist/gatsby-theme-nehalem/src/components/common";
 
 const CustomPage: FunctionComponent<{ location: Location }> = ({location}) => (
   <Layout bigHeader={false}>
@@ -46,9 +46,9 @@ Components often have some props. The `FunctionDecorator` interface allows creat
 
 ```typescript jsx
 import React, {FunctionComponent} from "react";
-import Layout from "gatsby-theme-nehalem/src/components/layout";
-import SEO from "gatsby-theme-nehalem/src/components/seo";
-import Container from "gatsby-theme-nehalem/src/components/common";
+import Layout from "@nehalist/gatsby-theme-nehalem/src/components/layout";
+import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
+import Container from "@nehalist/gatsby-theme-nehalem/src/components/common";
 
 interface CustomPageProps { // highlight-line
   location: Location;
@@ -77,10 +77,10 @@ Some components, like the `PageTemplate` use a small component for a stylish sub
 
 ```typescript jsx
 import React, {FunctionComponent} from "react";
-import Layout from "gatsby-theme-nehalem/src/components/layout";
-import SEO from "gatsby-theme-nehalem/src/components/seo";
-import Container from "gatsby-theme-nehalem/src/components/common";
-import Subheader from "gatsby-theme-nehalem/src/components/subheader";
+import Layout from "@nehalist/gatsby-theme-nehalem/src/components/layout";
+import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
+import Container from "@nehalist/gatsby-theme-nehalem/src/components/common";
+import Subheader from "@nehalist/gatsby-theme-nehalem/src/components/subheader";
 
 const CustomPage: FunctionComponent<{ location: Location }> = ({location}) => (
   <Layout bigHeader={false}>

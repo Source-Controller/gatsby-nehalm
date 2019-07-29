@@ -19,7 +19,7 @@ Nehalem offers several way of customization:
 Theming relies on the component shadowing technique - which basically means you need to create a file which mirrors the original file. To 
 change our appearance we'll have to shadow our `theme.ts` file.
 
-Just create this file under `src/gatsby-theme-nehalem/styles/theme.ts` and add the following content:
+Just create this file under `src/@nehalist/gatsby-theme-nehalem/styles/theme.ts` and add the following content:
 
 ```typescript jsx
 const Theme: DefaultTheme = {
@@ -129,35 +129,35 @@ Available placeholder components are:
 ###  Logo
 
 - Original path: `src/components/logo/index.tsx`
-- Shadowed path would be: `src/gatsby-theme-nehalem/components/logo/index.tsx`
+- Shadowed path would be: `src/@nehalist/gatsby-theme-nehalem/components/logo/index.tsx`
 
 This is the logo shown in the navigation.
 
 ### Avatar
 
 - Original path: `src/components/avatar/index.tsx`
-- Shadowed path would be: `src/gatsby-theme-nehalem/components/avatar/index.tsx`
+- Shadowed path would be: `src/@nehalist/gatsby-theme-nehalem/components/avatar/index.tsx`
 
 Your avatar picture shown in the bio.
 
 ### Comments
 
 - Original path: `src/components/comments/index.tsx`
-- Shadowed path would be: `src/gatsby-theme-nehalem/comments/index.tsx`
+- Shadowed path would be: `src/@nehalist/gatsby-theme-nehalem/comments/index.tsx`
 
 The `<Comments>` component is embedded beneath every post and should make it easier for you to embed comments (like Commento, Disqus, ...).
 
 ### SidebarContent
 
 - Original path: `src/components/sidebar-content/index.tsx`
-- Shadowed path would be: `src/gatsby-theme-nehalem/sidebar-content/index.tsx`
+- Shadowed path would be: `src/@nehalist/gatsby-theme-nehalem/sidebar-content/index.tsx`
 
 The sidebar content on the front page.
 
 ### PageSidebarContent
 
 - Original path: `src/components/page-sidebar-content/index.tsx`
-- Shadowed path would be: `src/gatsby-theme-nehalem/page-sidebar-content/index.tsx`
+- Shadowed path would be: `src/@nehalist/gatsby-theme-nehalem/page-sidebar-content/index.tsx`
 
 The sidebar content for pages.
 
