@@ -33,7 +33,7 @@ const SidebarContent: FunctionComponent = () => {
   return (
     <StickySidebarContent>
       <DownloadButton
-        href={`https://github.com/nehalist/gatsby-theme-nehalem`}
+        href={`https://nehalem.netlify.com/getting-started`}
         target={`_blank`}
         rel={`noopener`}
         aria-label={`Get this theme`}
