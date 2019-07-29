@@ -2,10 +2,9 @@ import React, {FunctionComponent} from "react";
 import Layout from "../components/layout";
 import {graphql} from "gatsby";
 import {Post} from "../utils/models";
-import {Grid} from "../components/common";
-import {Card} from "../components/card";
 import Subheader from "../components/subheader";
 import SEO from "../components/seo";
+import PostGrid from "../components/post-grid";
 
 interface ArchivePageProps {
   data: {
@@ -17,7 +16,7 @@ interface ArchivePageProps {
 }
 
 const ArchivePage: FunctionComponent<ArchivePageProps> = ({data, location}) => {
-  const posts = data.allPosts.edges.map(node => node.node);
+  const posts = data.allPosts.edges.map(node => node.node) as Post[];
 
   return (
     <Layout bigHeader={false}>
@@ -27,24 +26,7 @@ const ArchivePage: FunctionComponent<ArchivePageProps> = ({data, location}) => {
         type={`Series`}
       />
       <Subheader title={`Archive`} subtitle={`${posts.length} posts`}/>
-      <Grid>
-        {posts.map((post, index) => (
-          <Card
-            title={post.frontmatter.title}
-            path={post.frontmatter.path}
-            featuredImage={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp : null}
-            content={post.frontmatter.excerpt}
-            key={index}
-            meta={
-              {
-                time: post.frontmatter.created,
-                timePretty: post.frontmatter.createdPretty,
-                tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null,
-              }
-            }
-          />
-        ))}
-      </Grid>
+      <PostGrid posts={posts} />
     </Layout>
   );
 };

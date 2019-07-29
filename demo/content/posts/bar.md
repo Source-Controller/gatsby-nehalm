@@ -1,7 +1,7 @@
 ---
 title: "This is a test"
 path: "/bar"
-tags: ["JavaScript"]
+tags: ["Tnoidi"]
 featuredImage: "../assets/images/test.jpg"
 excerpt: This is the best post I've ever written. It even has a very long excerpt. I'm really excited.
 created: 2019-07-20

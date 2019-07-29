@@ -16,6 +16,7 @@ interface SocialChannelListProps {
   channels: SocialChannels;
 }
 
+// Returns a proper icon for a given channel
 const createSocialIcon = (channel: keyof SocialChannels) => {
   switch (channel) {
     case "twitter":
@@ -55,23 +56,21 @@ const StyledSocialChannel = styled.li`
   }
 `;
 
-const SocialChannelList: FunctionComponent<SocialChannelListProps> = ({channels}) => {
-  return (
-    <StyledSocialChannels>
-      {(Object.keys(channels)).filter(c => channels[c] !== '').map((channel, index) => (
-        <StyledSocialChannel key={index}>
-          <a
-            href={channels[channel]}
-            target={`_blank`}
-            rel={`noopener`}
-            aria-label={channel}
-          >
-            {createSocialIcon(channel as keyof SocialChannels)}
-          </a>
-        </StyledSocialChannel>
-      ))}
-    </StyledSocialChannels>
-  );
-};
+const SocialChannelList: FunctionComponent<SocialChannelListProps> = ({channels}) => (
+  <StyledSocialChannels>
+    {(Object.keys(channels)).filter(c => channels[c] !== '').map((channel, index) => (
+      <StyledSocialChannel key={index}>
+        <a
+          href={channels[channel]}
+          target={`_blank`}
+          rel={`noopener`}
+          aria-label={channel}
+        >
+          {createSocialIcon(channel as keyof SocialChannels)}
+        </a>
+      </StyledSocialChannel>
+    ))}
+  </StyledSocialChannels>
+);
 
 export default SocialChannelList;

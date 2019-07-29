@@ -8,6 +8,7 @@ import Avatar from "../avatar";
 interface BioProps {
   textAlign: 'left' | 'center' | 'right' | 'justify';
   avatarStyle?: CSSProperties;
+  showName?: boolean;
 }
 
 const StyledBio = styled.section<Pick<BioProps, 'textAlign'>>`
@@ -18,9 +19,18 @@ const StyledBio = styled.section<Pick<BioProps, 'textAlign'>>`
 
 const AuthorDescription = styled.p`
   margin: 10px 0 13px;
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
 `;
 
-const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle}) => {
+const AuthorName = styled.h3`
+  margin: 10px;
+`;
+
+const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle, showName = false}) => {
   const metadata = useStaticQuery<SiteMetadata>(graphql`
     query MetadataQuery {
       site {
@@ -48,6 +58,7 @@ const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle}) =
   return (
     <StyledBio textAlign={textAlign}>
       <Avatar alt={author.name} style={avatarStyle} />
+      {showName && <AuthorName>{author.name}</AuthorName>}
       <AuthorDescription dangerouslySetInnerHTML={{__html: author.description}}/>
       <SocialChannelList channels={author.social}/>
     </StyledBio>

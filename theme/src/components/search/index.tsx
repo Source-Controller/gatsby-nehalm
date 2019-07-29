@@ -22,11 +22,20 @@ export const Search: FunctionComponent = () => {
   const searchRef                 = useRef<HTMLDivElement>(null);
   const resultRefs: HTMLElement[] = [];
 
+  // Responsible for closing the search dialog when clicked outside the search dialog
   useEffect(() => {
     document.addEventListener('click', handleClickOutside, true);
     return () => document.removeEventListener('click', handleClickOutside);
   });
 
+  const handleClickOutside = (event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  // The actual search functionality
+  // See https://www.gatsbyjs.org/packages/gatsby-plugin-lunr/
   const search = (event) => {
     const input = event.target.value;
     if (!input || !(window as any).__LUNR__ || input === '') {
@@ -43,6 +52,7 @@ export const Search: FunctionComponent = () => {
     setQuery(input);
   };
 
+  // Responsible for navigating to results on key presses
   const scrollToResult = (selectIndex) => {
     if (resultListRef.current && resultRefs[selectIndex]) {
       const current                   = resultRefs[selectIndex];
@@ -50,12 +60,7 @@ export const Search: FunctionComponent = () => {
     }
   };
 
-  const handleClickOutside = (event) => {
-    if (searchRef.current && !searchRef.current.contains(event.target)) {
-      setIsOpen(false);
-    }
-  };
-
+  // Key handling to enable key navigation (arrow keys, ...) within the search results
   const handleKey = (event) => {
     const currentSelection = results[selected];
 
@@ -99,6 +104,7 @@ export const Search: FunctionComponent = () => {
     }
   };
 
+  // Toggles the search dialog
   const toggleSearch = () => setIsOpen(!isOpen);
 
   return (

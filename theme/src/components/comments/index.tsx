@@ -1,10 +1,9 @@
 import React, {FunctionComponent} from "react";
 
 /**
- * This is a placeholder file.
+ * Placeholder which is attached under every post. Can be shadowed to
+ * quickly integrate comments (like commento, Disqus, ...).
  */
-const Comments: FunctionComponent = () => {
-  return <></>;
-};
+const Comments: FunctionComponent = () => <></>;
 
 export default Comments;

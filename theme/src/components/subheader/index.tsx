@@ -32,17 +32,15 @@ const SubheaderSubtitle = styled.small`
   opacity: .9;
 `;
 
-const Subheader: FunctionComponent<SubheaderProps> = ({title, subtitle, backgroundColor, textColor}) => {
-  return (
-    <StyledSubheader backgroundColor={backgroundColor} textColor={textColor}>
-      <Container>
-        <SubheaderTitle>
-          {title}
-          <SubheaderSubtitle>{subtitle}</SubheaderSubtitle>
-        </SubheaderTitle>
-      </Container>
-    </StyledSubheader>
-  );
-};
+const Subheader: FunctionComponent<SubheaderProps> = ({title, subtitle, backgroundColor, textColor}) => (
+  <StyledSubheader backgroundColor={backgroundColor} textColor={textColor}>
+    <Container>
+      <SubheaderTitle>
+        {title}
+        <SubheaderSubtitle>{subtitle}</SubheaderSubtitle>
+      </SubheaderTitle>
+    </Container>
+  </StyledSubheader>
+);
 
 export default Subheader;

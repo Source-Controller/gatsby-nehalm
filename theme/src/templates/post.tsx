@@ -222,7 +222,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
         description={post.frontmatter.excerpt}
         image={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp.sizes.src : null}
       />
-      <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : null}/>
+      <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : undefined}/>
       <PostContainer>
         {post.headings.find(h => h.depth > 1) &&
         <>
@@ -280,7 +280,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
       <PostAddition>
         <PostAdditionContent>
           <BioWrapper>
-            <Bio textAlign={`center`}/>
+            <Bio textAlign={`center`} showName={true}/>
           </BioWrapper>
         </PostAdditionContent>
       </PostAddition>

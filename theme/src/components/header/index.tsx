@@ -8,12 +8,11 @@ interface HeaderProps {
   title: string;
   description: string;
   topics: string[];
-  logo: string;
   menu: MenuItem[];
   search: boolean;
 }
 
-const Header: FunctionComponent<HeaderProps> = ({title, description, logo, menu, topics = [], search = true}) => {
+const Header: FunctionComponent<HeaderProps> = ({title, description, menu, topics = [], search = true}) => {
   if (topics.length > 0) {
     description = reactStringReplace(description, '%TOPICS%', (match, i) => {
       return (
@@ -32,7 +31,7 @@ const Header: FunctionComponent<HeaderProps> = ({title, description, logo, menu,
 
   return (
     <StyledHeader>
-      <StyledNavigation title={title} logo={logo} menu={menu} showSearch={search}/>
+      <StyledNavigation title={title} menu={menu} showSearch={search}/>
       <TitleWrapper>
         <Title>{title}</Title>
         <Description>

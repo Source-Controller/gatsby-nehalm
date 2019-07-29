@@ -3,6 +3,10 @@ import tocbot from 'tocbot';
 import styled from "styled-components";
 
 interface TocProps {
+  /**
+   * Callback triggered whenever the TOC is clicked. Used for
+   * hiding the mobile toc overlay when clicking on a link.
+   */
   onClick: () => void;
 }
 

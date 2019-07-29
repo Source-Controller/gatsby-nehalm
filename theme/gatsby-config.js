@@ -18,11 +18,10 @@ module.exports = (themeOptions) => {
       description: `A Gatsby theme for %TOPICS%`,
       topics: [
         `bloggers`,
-        `writers`,
         `geeks`,
         `nerds`,
         `people`,
-        `pretty much everyone`
+        `everyone`
       ],
       menu: [
         {
@@ -30,36 +29,23 @@ module.exports = (themeOptions) => {
           path: '/'
         },
         {
-          name: 'Foo',
-          path: '/foo'
+          name: 'Example',
+          path: '/page'
         },
-        // {
-        //   name: 'Bar',
-        //   path: '/bar'
-        // },
-        // {
-        //   name: 'Thelink',
-        //   path: '/foo'
-        // },
-        // {
-        //   name: 'Privacy Policy',
-        //   path: '/foo'
-        // }
       ],
       footerMenu: [
         {
-          name: 'Test',
-          path: '/foo'
+          name: 'RSS',
+          path: '/rss.xml'
         },
-        {
-          name: 'Foo',
-          path: '/foobar'
-        }
       ],
       search: true,
       author: {
-        name: `Kevin`,
-        description: `<strong>Lorem</strong> ipsum dolor sit amet, consectetur adipiscing elit. Sed at faucibus mauris. Sed accumsan nibh volutpat consectetur hendrerit. Proin quis pellentesque nulla. Duis placerat lacus non tempus efficitur.`,
+        name: `nehalem`,
+        description: `I'm <strong>nehalem</strong>, a Gatsby theme by 
+        <a href="https://nehalist.io" rel="noopener" target="_blank">nehalist.io</a>. Go get me on 
+        <a href="https://github.com/nehalist/gatsby-theme-nehalem" rel="noopener" target="_blank">GitHub</a> and don't forget to leave
+        a star in case you like me!`,
         social: {
           facebook: ``,
           twitter: `https://twitter.com/nehalist`,

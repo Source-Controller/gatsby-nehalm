@@ -7,6 +7,9 @@ const StickySidebarContent = styled.div`
   top: 30px;
 `;
 
+/**
+ * Placeholder for the front page sidebar content.
+ */
 const SidebarContent: FunctionComponent = () => {
   return (
     <StickySidebarContent>

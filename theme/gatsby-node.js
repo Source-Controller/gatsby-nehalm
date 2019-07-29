@@ -10,18 +10,10 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   const { program } = store.getState();
 
   const contentPath = themeOptions.contentPath || 'content';
-  const assetPath   = themeOptions.assetPath || 'assets';
 
-  const directories = [
-    path.join(program.directory, contentPath),
-    path.join(program.directory, assetPath)
-  ];
-
-  directories.forEach(dir => {
-    if (!fs.existsSync(dir)) {
-      mkdirp(dir);
-    }
-  })
+  if (!fs.existsSync(path.join(program.directory, contentPath))) {
+    mkdirp(dir);
+  }
 };
 
 exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
@@ -97,6 +89,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   const pages         = result.data.pages.edges.map(node => node.node);
   const availableTags = result.data.tags.edges.map(node => node.node).map(t => t.name) || [];
 
+  // Create a route for every single post (located in `content/posts`)
   posts.forEach(post => {
     if (post.frontmatter.tags) {
       tags.push(...post.frontmatter.tags);
@@ -112,6 +105,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     });
   });
 
+  // Create a route for every single page (located in `content/pages`)
   pages.forEach(page => {
     actions.createPage({
       path: page.frontmatter.path,
@@ -122,6 +116,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     });
   });
 
+  // Create a route for every single route (from `content/tags.yml` and the tags found in posts)
   [...new Set(tags)].concat(availableTags).forEach(tag => {
     const slugified = slugify(tag, { lower: true });
     actions.createPage({
@@ -133,6 +128,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     });
   });
 
+  // The index page
   actions.createPage({
     path: "/",
     component: require.resolve(`./src/templates/posts.tsx`),

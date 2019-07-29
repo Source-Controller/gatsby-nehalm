@@ -13,6 +13,9 @@ const StyledAvatar = styled(Img)<AvatarProps>`
   border-radius: 100%;
 `;
 
+/**
+ * Placeholder component which shows your avatar.
+ */
 const Avatar: FunctionComponent<AvatarProps> = ({alt, style}) => {
   const logo = useStaticQuery(graphql`
     query {
