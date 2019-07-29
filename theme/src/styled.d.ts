@@ -10,6 +10,13 @@ declare module 'styled-components' {
     fonts: {
       base: string;
     };
+    breakpoints: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    };
     components: {
       container: {
         width: string;

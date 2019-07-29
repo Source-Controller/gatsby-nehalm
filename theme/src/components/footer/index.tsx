@@ -10,6 +10,7 @@ const StyledFooter = styled.footer`
   z-index: 700;
   position: relative;
   font-size: .9em;
+  margin-top: 50px;
 `;
 
 const FooterContainer = styled(Container)`

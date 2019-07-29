@@ -8,6 +8,10 @@ export const StyledHeader = styled.header`
   flex-direction: column;
   height: ${Theme.components.header.height};
   border-bottom: 2px #ededed solid;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    height: 30vh;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -16,6 +20,14 @@ export const TitleWrapper = styled.div`
   align-items: center;
   height: 100%;
   flex-direction: column;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    margin-top: -50px;
+    font-size: .75em;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+  }
 `;
 
 export const Title = styled.h1`

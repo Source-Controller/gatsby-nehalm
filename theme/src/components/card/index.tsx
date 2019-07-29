@@ -2,6 +2,7 @@ import React, {CSSProperties, FunctionComponent, ReactNode} from "react";
 import {Link} from "gatsby";
 import styled from "styled-components";
 import Img from "gatsby-image";
+import Theme from "../../styles/theme";
 
 export interface CardProps {
   title?: string;
@@ -37,6 +38,11 @@ const StyledCard = styled(Link)`
 
 const StyledArticle = styled.article`
   display: inline-block;
+  width: 100%;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    grid-area: unset !important;
+  }
 `;
 
 const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
@@ -51,6 +57,12 @@ const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
     margin-right: 30px;
     height: 320px;
     border-bottom-left-radius: 3px;
+
+    @media (max-width: ${Theme.breakpoints.sm}) {
+      width: 100%;
+      float: none;
+      height: 190px;
+    }
   ` : `
     height: 190px;
     max-height: 190px;

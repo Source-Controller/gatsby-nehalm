@@ -2,6 +2,10 @@ import React, {FunctionComponent, useEffect} from "react";
 import tocbot from 'tocbot';
 import styled from "styled-components";
 
+interface TocProps {
+  onClick: () => void;
+}
+
 const StyledNav = styled.nav`
   .toc-list {
     list-style-type: none;
@@ -34,7 +38,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Toc: FunctionComponent = () => {
+const Toc: FunctionComponent<TocProps> = ({onClick}) => {
   useEffect(() => {
     tocbot.init({
       tocSelector: `.toc`,
@@ -48,7 +52,7 @@ const Toc: FunctionComponent = () => {
   });
 
   return (
-    <StyledNav className={`toc`} />
+    <StyledNav className={`toc`} onClick={onClick} />
   );
 };
 

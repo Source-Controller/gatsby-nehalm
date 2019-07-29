@@ -138,7 +138,9 @@ export const Search: FunctionComponent = () => {
                 selected={index === selected}
               >
                 <ResultLink to={item.path}>
+                  {item.tags &&
                   <small>{item.tags.join(', ')}</small>
+                  }
                   <ResultTitle>{item.title}</ResultTitle>
                   {item.excerpt}
                 </ResultLink>

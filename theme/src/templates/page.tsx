@@ -19,6 +19,10 @@ const PageContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    display: block;
+  }
+
   p:first-child {
     margin-top: 0;
   }
@@ -26,10 +30,19 @@ const PageContainer = styled(Container)`
 
 const PageContent = styled.section`
   width: 70%;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    width: 100%;
+  }
 `;
 
 const PageSidebar = styled.aside`
   width: 25%;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    border-top: 2px #e5eff5 solid;
+    width: 100%;
+  }
 `;
 
 const PageTemplate: FunctionComponent<PageTemplateProps> = ({pathContext, location}) => {

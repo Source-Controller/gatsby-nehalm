@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {Tag} from "../../utils/models";
 import Img from "gatsby-image";
 import slugify from "slugify";
+import Theme from "../../styles/theme";
 
 const TagContainer = styled.section`
   background-color: #fff;
@@ -11,7 +12,6 @@ const TagContainer = styled.section`
   border-bottom: 1px #e5eff5 solid;
   padding: 40px;
   margin-top: 75px;
-  margin-bottom: 75px;
   text-align: center;
 `;
 
@@ -25,6 +25,11 @@ const StyledTagList = styled.ul`
   margin: 0;
   padding: 0;
   justify-content: center;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 `;
 
 const StyledTag = styled.li`
@@ -33,6 +38,15 @@ const StyledTag = styled.li`
 
   &:hover {
     transform: scale(1.04);
+  }
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    width: 50%;
+    margin: 0 0 20px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Link} from "gatsby";
+import Theme from "../../styles/theme";
 
 export const SearchBox = styled.div<{ readonly open: boolean }>`
   display: ${props => props.open ? 'block' : 'none'};
@@ -21,6 +22,15 @@ export const SearchBox = styled.div<{ readonly open: boolean }>`
     top: -8px;
     right: 38px;
     transform: rotate(45deg);
+
+    @media (max-width: ${Theme.breakpoints.sm}) {
+      right: 20px;
+    }
+  }
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    width: 300px;
+    left: -250px;
   }
 `;
 

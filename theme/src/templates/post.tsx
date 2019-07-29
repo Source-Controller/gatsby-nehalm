@@ -1,4 +1,4 @@
-import React, {createRef, FunctionComponent} from "react";
+import React, {createRef, FunctionComponent, useState} from "react";
 import Layout from "../components/layout";
 import {Post, Tag} from "../utils/models";
 import {Container} from "../components/common";
@@ -12,6 +12,7 @@ import slugify from "slugify";
 import Bio from "../components/bio";
 import Comments from "../components/comments";
 import SEO from "../components/seo";
+import {FaAlignJustify, FaTimes} from "react-icons/fa";
 
 interface PostTemplateProps {
   data: {
@@ -24,11 +25,25 @@ interface PostTemplateProps {
 const PostContainer = styled(Container)`
   display: flex;
   justify-content: center;
+  padding: 0 !important;
 `;
 
-const LeftSidebar = styled.div`
+const LeftSidebar = styled.div<{ show?: boolean }>`
   min-width: 255px;
   max-width: 225px;
+  transition: opacity .5s;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    position: fixed;
+    opacity: ${props => props.show ? 1 : 0};
+    z-index: 1000;
+    background-color: #fff;
+    width: 100% !important;
+    max-width: 100%;
+    padding: 0 20px;
+    margin-top: -5px;
+    height: calc(100vh - 70px);
+  }
 `;
 
 const PostContent = styled.div`
@@ -39,6 +54,7 @@ const PostContent = styled.div`
   box-shadow: 0 0 3px rgba(0, 0, 0, .03), 0 3px 46px rgba(0, 0, 0, .1);
   z-index: 10;
   width: 1035px;
+  max-width: 100%;
 
   p > a {
     color: ${Theme.layout.linkColor};
@@ -91,14 +107,27 @@ const TocWrapper = styled.div`
 
 const PostHeader = styled.header`
   padding: 40px;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    padding: 20px;
+  }
 `;
 
 const FeaturedImage = styled(Img)`
   border-radius: 0;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    margin-left: -1px;
+    margin-right: -1px;
+  }
 `;
 
 const StyledPost = styled.section`
   padding: 40px;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    padding: 20px;
+  }
 `;
 
 const PostMeta = styled.section`
@@ -148,12 +177,39 @@ const PostAdditionContent = styled(Container)`
 const BioWrapper = styled.div`
   width: 50%;
   margin: auto;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    width: 100%;
+  }
+`;
+
+const ToggleTocButton = styled.button`
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 100%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .03), 0 3px 46px rgba(0, 0, 0, .1);
+  border: 0;
+  z-index: 5000;
+  width: 50px;
+  height: 50px;
+  background-color: #20232a;
+  color: #fff;
+  outline: none;
+
+  @media (min-width: ${Theme.breakpoints.md}) {
+    display: none;
+  }
 `;
 
 const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) => {
-  const post               = data.post;
-  const readingProgressRef = createRef<HTMLElement>();
-  const primaryTag         = data.primaryTag;
+  const [showToc, setShowToc] = useState<boolean>(false);
+  const post                  = data.post;
+  const readingProgressRef    = createRef<HTMLElement>();
+  const primaryTag            = data.primaryTag;
+  const toggleToc             = () => setShowToc(!showToc);
 
   return (
     <Layout bigHeader={false}>
@@ -169,9 +225,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
       <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : null}/>
       <PostContainer>
         {post.headings.find(h => h.depth > 1) &&
-        <LeftSidebar>
+        <LeftSidebar show={showToc}>
             <TocWrapper>
-                <Toc/>
+                <Toc onClick={toggleToc}/>
             </TocWrapper>
         </LeftSidebar>
         }
@@ -220,6 +276,13 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
         </PostAdditionContent>
       </PostAddition>
       <Comments/>
+      <ToggleTocButton
+        role={`button`}
+        aria-label={`Toggle table of contents`}
+        onClick={toggleToc}
+      >
+        {showToc ? <FaTimes/> : <FaAlignJustify/>}
+      </ToggleTocButton>
     </Layout>
   );
 };

@@ -8,6 +8,7 @@ import TagList from "../components/tag-list";
 import {Link} from "gatsby";
 import SidebarContent from "../components/sidebar-content";
 import SEO from "../components/seo";
+import Theme from "../styles/theme";
 
 interface PostsPageProps {
   pathContext: {
@@ -19,6 +20,10 @@ interface PostsPageProps {
 const HomeContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    flex-wrap: wrap;
+  }
 `;
 
 const PostsContainer = styled(Grid)`
@@ -29,11 +34,27 @@ const PostsContainer = styled(Grid)`
   margin-left: 0;
   margin-right: 0;
   margin-top: -30px;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    display: block;
+    padding: 0;
+
+    article {
+      margin-bottom: 30px;
+    }
+  }
 `;
 
 const Sidebar = styled.aside`
   width: 315px;
   padding-top: 30px;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    margin-top: 30px;
+    border-top: 2px #e5eff5 solid;
+    padding: 20px;
+    width: 100%;
+  }
 `;
 
 const ArchiveLinkWrapper = styled.div`

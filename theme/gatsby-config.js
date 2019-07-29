@@ -31,7 +31,19 @@ module.exports = (themeOptions) => {
         {
           name: 'Foo',
           path: '/foo'
-        }
+        },
+        // {
+        //   name: 'Bar',
+        //   path: '/bar'
+        // },
+        // {
+        //   name: 'Thelink',
+        //   path: '/foo'
+        // },
+        // {
+        //   name: 'Privacy Policy',
+        //   path: '/foo'
+        // }
       ],
       footerMenu: [
         {
