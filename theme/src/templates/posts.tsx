@@ -7,11 +7,13 @@ import styled from "styled-components";
 import TagList from "../components/tag-list";
 import {Link} from "gatsby";
 import SidebarContent from "../components/sidebar-content";
+import SEO from "../components/seo";
 
 interface PostsPageProps {
   pathContext: {
     posts: Post[];
   };
+  location: Location;
 }
 
 const HomeContainer = styled(Container)`
@@ -51,18 +53,19 @@ const ArchiveLink = styled(Link)`
   }
 `;
 
-const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext }) => {
+const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext, location }) => {
   const posts = pathContext.posts;
 
   return (
     <Layout>
+      <SEO location={location} type={`WebSite`} />
       <HomeContainer>
         <PostsContainer>
           {posts.map((post, index) => (
             <Card
               title={post.frontmatter.title}
               path={post.frontmatter.path}
-              featuredImage={post.frontmatter.featuredImage.childImageSharp}
+              featuredImage={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp : null}
               content={post.frontmatter.excerpt}
               key={index}
               meta={

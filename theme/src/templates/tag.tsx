@@ -5,6 +5,7 @@ import {Post, Tag} from "../utils/models";
 import {Grid} from "../components/common";
 import Subheader from "../components/subheader";
 import {Card} from "../components/card";
+import SEO from "../components/seo";
 
 interface TagTemplateProps {
   data: {
@@ -13,23 +14,28 @@ interface TagTemplateProps {
       edges: Array<{ node: Post }>;
     }
   };
+  location: Location;
 }
 
-const TagTemplate: FunctionComponent<TagTemplateProps> = ({data}) => {
+const TagTemplate: FunctionComponent<TagTemplateProps> = ({data, location}) => {
   const tag   = data.tag;
   const posts = data.posts.edges.map(node => node.node);
 
   return (
     <Layout bigHeader={false}>
+      <SEO
+        title={tag.name}
+        location={location}
+        type={`Series`}
+      />
       <Subheader title={tag.name} subtitle={`${posts.length} posts`} backgroundColor={tag.color}/>
       <Grid>
         {posts.map((post, index) => (
           <Card
             title={post.frontmatter.title}
             path={post.frontmatter.path}
-            featuredImage={post.frontmatter.featuredImage.childImageSharp}
+            featuredImage={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp : null}
             content={post.frontmatter.excerpt}
-            width={`100%`}
             key={index}
             meta={
               {

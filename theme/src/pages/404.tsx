@@ -3,6 +3,11 @@ import Layout from "../components/layout";
 import {Link} from "gatsby";
 import styled from "styled-components";
 import Theme from "../styles/theme";
+import SEO from "../components/seo";
+
+interface ErrorProps {
+  location: Location;
+}
 
 const Error = styled.section`
   display: flex;
@@ -37,8 +42,12 @@ const BackLink = styled(Link)`
   }
 `;
 
-const NotFoundPage: FunctionComponent = () => (
+const NotFoundPage: FunctionComponent<ErrorProps> = ({location}) => (
   <Layout bigHeader={false}>
+    <SEO
+      location={location}
+      title={`Page not found`}
+    />
     <Error>
       <ErrorTitle>404</ErrorTitle>
       <ErrorDescription>Page not found</ErrorDescription>

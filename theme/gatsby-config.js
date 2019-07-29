@@ -1,9 +1,18 @@
 module.exports = (themeOptions) => {
-  const loadDefaultPages = (themeOptions.loadDefaultPages) ? themeOptions.loadDefaultPages : true;
+  const loadDefaultPages = themeOptions.loadDefaultPages ? themeOptions.loadDefaultPages : true;
+  const manifest         = themeOptions.manifest ? themeOptions.manifest : {
+    name: `nehalem - A Gatsby theme`,
+    short_name: `nehalem`,
+    start_url: `/`,
+    background_color: `#a4cbb8`,
+    theme_color: `#a4cbb8`,
+    display: `minimal-ui`,
+  };
 
   return {
     siteMetadata: {
       title: `nehalem`,
+      siteUrl: `https://nehalem.netlify.com`,
       description: `A Gatsby theme for %TOPICS%`,
       topics: [
         `bloggers`,
@@ -13,7 +22,6 @@ module.exports = (themeOptions) => {
         `people`,
         `pretty much everyone`
       ],
-      logo: `gatsby-icon.png`,
       menu: [
         {
           name: 'Home',
@@ -52,8 +60,14 @@ module.exports = (themeOptions) => {
     plugins: [
       `gatsby-plugin-typescript`,
       `gatsby-transformer-sharp`,
+      `gatsby-plugin-react-helmet`,
       `gatsby-plugin-styled-components`,
+      `gatsby-plugin-sitemap`,
       `gatsby-plugin-sharp`,
+      {
+        resolve: `gatsby-plugin-manifest`,
+        options: manifest
+      },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
@@ -127,6 +141,60 @@ module.exports = (themeOptions) => {
         resolve: `gatsby-plugin-page-creator`,
         options: {
           path: `${__dirname}/src/pages`
+        }
+      },
+      {
+        resolve: `gatsby-plugin-feed`,
+        options: {
+          query: `
+            {
+              site {
+                siteMetadata {
+                  title
+                  description
+                  siteUrl
+                  site_url: siteUrl
+                }
+              }
+            }
+          `,
+          feeds: [
+            {
+              serialize: ({ query: { site, allMarkdownRemark } }) => {
+                return allMarkdownRemark.edges.map(edge => {
+                  return Object.assign({}, edge.node.frontmatter, {
+                    description: edge.node.frontmatter.excerpt,
+                    date: edge.node.frontmatter.created,
+                    url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                    guid: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                    custom_elements: [{ "content:encoded": edge.node.html }],
+                  })
+                })
+              },
+              query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___created] },
+                  filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
+                ) {
+                  edges {
+                    node {
+                      html
+                      frontmatter {
+                        title
+                        excerpt
+                        path
+                        created
+                      }
+                    }
+                  }
+                }
+              }
+              `,
+              output: `/rss.xml`,
+              title: `RSS Feed`
+            }
+          ]
         }
       }
     ]

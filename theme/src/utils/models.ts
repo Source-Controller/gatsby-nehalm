@@ -2,9 +2,9 @@ export interface SiteMetadata {
   site: {
     siteMetadata: {
       title: string;
+      siteUrl: string;
       description: string;
       topics: string[];
-      logo: string;
       menu: MenuItem[];
       footerMenu: MenuItem[];
       search: boolean;
@@ -59,6 +59,7 @@ export interface Page {
   frontmatter: {
     title: string;
     path: string;
+    excerpt: string;
   };
   html: string;
 }

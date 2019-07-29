@@ -8,7 +8,6 @@ export interface CardProps {
   path: string;
   featuredImage?: any;
   content?: string;
-  width?: string;
   meta?: {
     time: string;
     timePretty: string;
@@ -95,7 +94,7 @@ export const Card: FunctionComponent<CardProps> = ({
                                                      halfImage = false,
                                                      compact = false,
                                                      style,
-                                                     children
+                                                     children,
                                                    }) => {
   return (
     <StyledArticle style={style}>

@@ -8,6 +8,7 @@ import slugify from "slugify";
 import {Grid} from "../components/common";
 import Img from "gatsby-image";
 import styled from "styled-components";
+import SEO from "../components/seo";
 
 interface TagsPageProps {
   data: {
@@ -30,6 +31,11 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({data}) => {
 
   return (
     <Layout bigHeader={false}>
+      <SEO
+        location={location}
+        title={`Tags`}
+        type={`Series`}
+      />
       <Subheader title={`Tags`} subtitle={`${tags.length} tags`}/>
       <Grid columns={6}>
         {tags.map((tag, index) => (

@@ -5,6 +5,7 @@ import {Post} from "../utils/models";
 import {Grid} from "../components/common";
 import {Card} from "../components/card";
 import Subheader from "../components/subheader";
+import SEO from "../components/seo";
 
 interface ArchivePageProps {
   data: {
@@ -12,22 +13,27 @@ interface ArchivePageProps {
       edges: Array<{ node: Post }>;
     };
   };
+  location: Location;
 }
 
-const ArchivePage: FunctionComponent<ArchivePageProps> = ({data}) => {
+const ArchivePage: FunctionComponent<ArchivePageProps> = ({data, location}) => {
   const posts = data.allPosts.edges.map(node => node.node);
 
   return (
     <Layout bigHeader={false}>
+      <SEO
+        location={location}
+        title={`Archive`}
+        type={`Series`}
+      />
       <Subheader title={`Archive`} subtitle={`${posts.length} posts`}/>
       <Grid>
         {posts.map((post, index) => (
           <Card
             title={post.frontmatter.title}
             path={post.frontmatter.path}
-            featuredImage={post.frontmatter.featuredImage.childImageSharp}
+            featuredImage={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp : null}
             content={post.frontmatter.excerpt}
-            width={`100%`}
             key={index}
             meta={
               {

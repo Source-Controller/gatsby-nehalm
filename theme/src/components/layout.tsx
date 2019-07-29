@@ -19,7 +19,6 @@ const Layout: FunctionComponent<LayoutProps> = ({children, bigHeader = true}) =>
           title
           description
           topics
-          logo
           menu {
             name
             path

@@ -11,6 +11,7 @@ import {graphql, Link} from "gatsby";
 import slugify from "slugify";
 import Bio from "../components/bio";
 import Comments from "../components/comments";
+import SEO from "../components/seo";
 
 interface PostTemplateProps {
   data: {
@@ -19,6 +20,7 @@ interface PostTemplateProps {
   pathContext: {
     post: Post;
   };
+  location: Location;
 }
 
 const PostContainer = styled(Container)`
@@ -150,20 +152,29 @@ const BioWrapper = styled.div`
   margin: auto;
 `;
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext}) => {
+const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext, location}) => {
   const post               = pathContext.post;
   const readingProgressRef = createRef<HTMLElement>();
   const primaryTag         = data.primaryTag;
 
   return (
     <Layout bigHeader={false}>
+      <SEO
+        location={location}
+        title={post.frontmatter.title}
+        publishedAt={post.frontmatter.created}
+        updatedAt={post.frontmatter.updated}
+        tags={post.frontmatter.tags}
+        description={post.frontmatter.excerpt}
+        image={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp.sizes.src : null}
+      />
       <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : null}/>
       <PostContainer>
         {post.headings.find(h => h.depth > 1) &&
         <LeftSidebar>
-          <TocWrapper>
-            <Toc/>
-          </TocWrapper>
+            <TocWrapper>
+                <Toc/>
+            </TocWrapper>
         </LeftSidebar>
         }
         <PostContent>
