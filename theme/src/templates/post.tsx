@@ -97,6 +97,22 @@ const PostContent = styled.div`
     border-radius: .3em;
     margin: 30px 0;
   }
+
+  hr {
+    border-top: 1px solid #ececec;
+    border-bottom: 0;
+    margin-top: 44px;
+    margin-bottom: 40px;
+  }
+
+  .gatsby-resp-image-link {
+    margin: 30px 0;
+    max-width: 100%;
+
+    .gatsby-resp-image-image {
+      border-radius: .3em;
+    }
+  }
 `;
 
 const TocWrapper = styled.div`
