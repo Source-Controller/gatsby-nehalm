@@ -199,7 +199,7 @@ const ToggleTocButton = styled.button`
   color: #fff;
   outline: none;
 
-  @media (max-width: ${Theme.breakpoints.lg}) {
+  @media (min-width: ${Theme.breakpoints.lg}) {
     display: none;
   }
 `;
@@ -225,11 +225,20 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
       <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : null}/>
       <PostContainer>
         {post.headings.find(h => h.depth > 1) &&
-        <LeftSidebar show={showToc}>
-            <TocWrapper>
-                <Toc onClick={toggleToc}/>
-            </TocWrapper>
-        </LeftSidebar>
+        <>
+            <LeftSidebar show={showToc}>
+                <TocWrapper>
+                    <Toc onClick={toggleToc}/>
+                </TocWrapper>
+            </LeftSidebar>
+            <ToggleTocButton
+                role={`button`}
+                aria-label={`Toggle table of contents`}
+                onClick={toggleToc}
+            >
+              {showToc ? <FaTimes/> : <FaAlignJustify/>}
+            </ToggleTocButton>
+        </>
         }
         <PostContent>
           <article className={`post`} ref={readingProgressRef}>
@@ -276,15 +285,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
         </PostAdditionContent>
       </PostAddition>
       <Comments/>
-      {post.headings.find(h => h.depth > 1) &&
-      <ToggleTocButton
-          role={`button`}
-          aria-label={`Toggle table of contents`}
-          onClick={toggleToc}
-      >
-        {showToc ? <FaTimes/> : <FaAlignJustify/>}
-      </ToggleTocButton>
-      }
     </Layout>
   );
 };
