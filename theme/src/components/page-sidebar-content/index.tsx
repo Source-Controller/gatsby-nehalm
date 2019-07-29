@@ -4,6 +4,7 @@ import {Card} from "../card";
 import styled from "styled-components";
 
 const LatestPosts = styled.div`
+  display: block;
 `;
 
 const PageSidebarContent: FunctionComponent = () => {
@@ -48,7 +49,6 @@ const PageSidebarContent: FunctionComponent = () => {
             title={post.frontmatter.title}
             featuredImage={post.frontmatter.featuredImage.childImageSharp}
             path={post.frontmatter.path}
-            width={`100%`}
             key={index}
             compact={true}
             meta={
