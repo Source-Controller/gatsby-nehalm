@@ -6,3 +6,7 @@
   color: #00ffee
   icon: ./assets/images/nehalist_IconRound.png
   featured: true
+- name: Wohoo
+  color: #ff3f9f
+  icon: ./assets/images/typescript.svg
+  featured: true

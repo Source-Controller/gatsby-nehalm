@@ -18,11 +18,12 @@ interface PostsPageProps {
 }
 
 const HomeContainer = styled(Container)`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) .25fr;
+  grid-column-gap: 30px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
-    flex-wrap: wrap;
+  @media (max-width: ${Theme.breakpoints.xl}) {
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -30,7 +31,7 @@ const PostsContainer = styled(Grid)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "latest latest" ". .";
-  width: 915px;
+  width: 100%;
   margin-left: 0;
   margin-right: 0;
   margin-top: -30px;
@@ -49,8 +50,8 @@ const Sidebar = styled.aside`
   width: 315px;
   padding-top: 30px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
-    margin-top: 30px;
+  @media (max-width: ${Theme.breakpoints.xl}) {
+    margin: 30px auto;
     border-top: 2px #e5eff5 solid;
     padding: 20px;
     width: 100%;

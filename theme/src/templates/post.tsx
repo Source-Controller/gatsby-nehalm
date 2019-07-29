@@ -33,7 +33,7 @@ const LeftSidebar = styled.div<{ show?: boolean }>`
   max-width: 225px;
   transition: opacity .5s;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${Theme.breakpoints.xl}) {
     position: fixed;
     opacity: ${props => props.show ? 1 : 0};
     z-index: 1000;
@@ -116,7 +116,7 @@ const PostHeader = styled.header`
 const FeaturedImage = styled(Img)`
   border-radius: 0;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${Theme.breakpoints.xl}) {
     margin-left: -1px;
     margin-right: -1px;
   }
@@ -199,7 +199,7 @@ const ToggleTocButton = styled.button`
   color: #fff;
   outline: none;
 
-  @media (min-width: ${Theme.breakpoints.md}) {
+  @media (max-width: ${Theme.breakpoints.lg}) {
     display: none;
   }
 `;
