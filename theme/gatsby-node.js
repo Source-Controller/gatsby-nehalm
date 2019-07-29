@@ -92,9 +92,9 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     reporter.panic(result.errors);
   }
 
-  const tags  = [];
-  const posts = result.data.posts.edges.map(node => node.node);
-  const pages = result.data.pages.edges.map(node => node.node);
+  const tags          = [];
+  const posts         = result.data.posts.edges.map(node => node.node);
+  const pages         = result.data.pages.edges.map(node => node.node);
   const availableTags = result.data.tags.edges.map(node => node.node).map(t => t.name) || [];
 
   posts.forEach(post => {
