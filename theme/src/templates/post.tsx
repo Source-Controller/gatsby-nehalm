@@ -199,7 +199,7 @@ const ToggleTocButton = styled.button`
   color: #fff;
   outline: none;
 
-  @media (min-width: ${Theme.breakpoints.lg}) {
+  @media (min-width: ${Theme.breakpoints.xl}) {
     display: none;
   }
 `;
