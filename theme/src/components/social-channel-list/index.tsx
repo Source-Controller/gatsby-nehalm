@@ -64,6 +64,7 @@ const SocialChannelList: FunctionComponent<SocialChannelListProps> = ({channels}
             href={channels[channel]}
             target={`_blank`}
             rel={`noopener`}
+            aria-label={channel}
           >
             {createSocialIcon(channel as keyof SocialChannels)}
           </a>
