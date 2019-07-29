@@ -29,6 +29,7 @@ const PageContainer = styled(Container)`
 `;
 
 const PageSidebar = styled.aside`
+  margin-left: 50px;
 `;
 
 const PageTemplate: FunctionComponent<PageTemplateProps> = ({pathContext, location}) => {
