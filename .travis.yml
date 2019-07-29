@@ -10,5 +10,5 @@ install:
   - yarn install
 
 script:
-  - yarn workspace gatsby-theme-nehalem lint
+  - yarn workspace @nehalist/gatsby-theme-nehalem lint
   - yarn workspace demo build
