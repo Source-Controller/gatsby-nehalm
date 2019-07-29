@@ -56,6 +56,7 @@ const PostContent = styled.div`
   width: 1035px;
   max-width: 100%;
 
+  li > a,
   p > a {
     color: ${Theme.layout.linkColor};
     border-bottom: 2px ${Theme.layout.linkColor} solid;
