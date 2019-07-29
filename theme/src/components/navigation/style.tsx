@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Container} from "../common";
 import Theme from "../../styles/theme";
+import {Link} from "gatsby";
 
 export const NavContainer = styled.div<{ dark?: boolean}>`
   z-index: 1000;
@@ -50,12 +51,15 @@ export const NavMenuItem = styled.li`
   display: inline-block;
   border: 0;
   background: transparent;
-  color: #fff;
   outline: none;
-  opacity: .8;
   text-decoration: none;
-  transition: opacity .5s;
+`;
+
+export const NavLink = styled(Link)`
+  color: #fff;
+  opacity: .8;
   padding: 16px;
+  transition: opacity .5s;
 
   &:hover {
     opacity: 1;

@@ -1,7 +1,6 @@
 import React, {FunctionComponent} from "react";
-import {Nav, NavContainer, NavMenu, NavMenuItem, NavWrapper, SearchContainer} from "./style";
+import {Nav, NavContainer, NavLink, NavMenu, NavMenuItem, NavWrapper, SearchContainer} from "./style";
 import {MenuItem} from "../../utils/models";
-import {Link} from "gatsby";
 import {Search} from "../search";
 import Logo from "../logo";
 
@@ -21,9 +20,9 @@ const Navigation: FunctionComponent<NavigationProps> = ({title, menu, dark = fal
         <NavWrapper>
           <NavMenu mobile={true}>
             {menu.map((item, index) => (
-              <Link to={item.path} key={index}>
-                <NavMenuItem key={index}>{item.name}</NavMenuItem>
-              </Link>
+              <NavMenuItem key={index}>
+                <NavLink to={item.path} key={index}>{item.name}</NavLink>
+              </NavMenuItem>
             ))}
           </NavMenu>
           {showSearch &&
