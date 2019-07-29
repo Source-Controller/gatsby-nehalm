@@ -276,13 +276,15 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
         </PostAdditionContent>
       </PostAddition>
       <Comments/>
+      {post.headings.find(h => h.depth > 1) &&
       <ToggleTocButton
-        role={`button`}
-        aria-label={`Toggle table of contents`}
-        onClick={toggleToc}
+          role={`button`}
+          aria-label={`Toggle table of contents`}
+          onClick={toggleToc}
       >
         {showToc ? <FaTimes/> : <FaAlignJustify/>}
       </ToggleTocButton>
+      }
     </Layout>
   );
 };
