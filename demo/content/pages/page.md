@@ -1,7 +1,7 @@
 ---
-title: This is a page
+title: Sample page
 path: "/page"
-excerpt: Just for seo.
+excerpt: A sample page.
 ---
 
-Hello there.
+This is a very simple sample static page.
