@@ -14,7 +14,6 @@ const LatestPosts = styled.div`
     grid-template-columns: 1fr 1fr;
   }
 
-  // Todo: weird breakpoint
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
   }
