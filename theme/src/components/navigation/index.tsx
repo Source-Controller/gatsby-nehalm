@@ -25,13 +25,13 @@ const Navigation: FunctionComponent<NavigationProps> = ({title, menu, dark = fal
               </NavMenuItem>
             ))}
           </NavMenu>
-          {showSearch &&
-          <NavMenu>
-            <SearchContainer>
-              <Search/>
-            </SearchContainer>
-          </NavMenu>
-          }
+          <SearchContainer>
+            {showSearch &&
+            <NavMenu>
+                <Search/>
+            </NavMenu>
+            }
+          </SearchContainer>
         </NavWrapper>
       </Nav>
     </NavContainer>

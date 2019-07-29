@@ -7,8 +7,8 @@ export const SearchBox = styled.div<{ readonly open: boolean }>`
   position: absolute;
   width: 400px;
   background-color: #fff;
-  left: -332px;
-  top: 48px;
+  left: -338px;
+  top: 40px;
   border-radius: 5px;
   box-shadow: 0 0 3px rgba(0, 0, 0, .03), 0 3px 46px rgba(0, 0, 0, .1);
 
@@ -24,13 +24,13 @@ export const SearchBox = styled.div<{ readonly open: boolean }>`
     transform: rotate(45deg);
 
     @media (max-width: ${Theme.breakpoints.sm}) {
-      right: 20px;
+      right: 17px;
     }
   }
 
   @media (max-width: ${Theme.breakpoints.sm}) {
     width: 300px;
-    left: -250px;
+    left: -260px;
   }
 `;
 

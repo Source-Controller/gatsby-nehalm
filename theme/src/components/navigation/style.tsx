@@ -67,5 +67,20 @@ export const NavLink = styled(Link)`
 `;
 
 export const SearchContainer = styled.div`
+  align-self: center;
   position: relative;
+`;
+
+export const ToggleSearchButton = styled.button`
+  cursor: pointer;
+  color: #fff;
+  opacity: .8;
+  background: none;
+  outline: none;
+  border: 0;
+  transition: opacity .5s;
+
+  &:hover {
+    opacity: 1;
+  }
 `;

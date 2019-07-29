@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import {FaSearch} from "react-icons/fa";
 import {ResultLink, ResultsTitle, ResultTitle, SearchBox, SearchInput, SearchResult, SearchResults} from "./style";
-import {NavMenuItem} from "../navigation/style";
+import {NavMenuItem, ToggleSearchButton} from "../navigation/style";
 import {navigate} from 'gatsby';
 
 interface SearchResult {
@@ -99,19 +99,18 @@ export const Search: FunctionComponent = () => {
     }
   };
 
-  const toggleSearch = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleSearch = () => setIsOpen(!isOpen);
 
   return (
     <>
-      <NavMenuItem
-        onClick={toggleSearch}
-        role={`button`}
-        aria-label={`Search`}
-        as={`button`}
-      >
-        <FaSearch/>
+      <NavMenuItem>
+        <ToggleSearchButton
+          role={`button`}
+          aria-label={`Toggle search`}
+          onClick={toggleSearch}
+        >
+          <FaSearch/>
+        </ToggleSearchButton>
       </NavMenuItem>
 
       {isOpen &&
