@@ -16,6 +16,7 @@ interface TagsPageProps {
       edges: Array<{ node: Tag }>;
     };
   };
+  location: Location;
 }
 
 const TagSvgIcon = styled.img`
@@ -26,7 +27,7 @@ const TagName = styled.p`
   margin: 0 !important;
 `;
 
-const TagsPage: FunctionComponent<TagsPageProps> = ({data}) => {
+const TagsPage: FunctionComponent<TagsPageProps> = ({data, location}) => {
   const tags = data.allTags.edges.map(node => node.node);
 
   return (
