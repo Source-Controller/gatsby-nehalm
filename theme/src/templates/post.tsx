@@ -16,8 +16,6 @@ import SEO from "../components/seo";
 interface PostTemplateProps {
   data: {
     primaryTag: Tag | null;
-  };
-  pathContext: {
     post: Post;
   };
   location: Location;
@@ -152,8 +150,8 @@ const BioWrapper = styled.div`
   margin: auto;
 `;
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext, location}) => {
-  const post               = pathContext.post;
+const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) => {
+  const post               = data.post;
   const readingProgressRef = createRef<HTMLElement>();
   const primaryTag         = data.primaryTag;
 
@@ -229,7 +227,32 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, pathContext, 
 export default PostTemplate;
 
 export const query = graphql`
-  query PrimaryTag($primaryTag: String!) {
+  query PrimaryTag($postId: String!, $primaryTag: String!) {
+    post: markdownRemark(
+      id: { eq: $postId }
+    ) {
+      headings {
+        depth
+      }
+      frontmatter {
+        title
+        path
+        tags
+        excerpt
+        created
+        createdPretty: created(formatString: "DD MMMM, YYYY")
+        updated
+        updatedPretty: created(formatString: "DD MMMM, YYYY")
+        featuredImage {
+          childImageSharp {
+            sizes(maxWidth: 800, quality: 75) {
+              ...GatsbyChildImageSharp
+            }
+          }
+        }
+      }
+      html
+    }
     primaryTag: tags(name: { eq: $primaryTag }) {
       name
       color

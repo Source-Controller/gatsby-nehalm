@@ -64,7 +64,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
               updatedPretty: created(formatString: "DD MMMM, YYYY")
               featuredImage {
                 childImageSharp {
-                  sizes(maxWidth: 800, quality: 75) {
+                  sizes(maxWidth: 500, quality: 75) {
                     base64
                     aspectRatio
                     src
@@ -106,7 +106,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       path: post.frontmatter.path,
       component: require.resolve(`./src/templates/post.tsx`),
       context: {
-        post: post,
+        postId: post.id,
         primaryTag: primaryTag
       }
     });
