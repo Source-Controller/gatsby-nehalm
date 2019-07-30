@@ -53,30 +53,30 @@ module.exports = {
 3. Nehalem in its default configuration requires a certain structure of your content. This is especially important to consider 
 when using a starter which already ships with a specific content structure - so just follow these rules:
    
-- Be sure to have a `content` directory within your Gatsby installation for all your pages and posts
-- Be sure to have a `tags.yml` file within the `content` directory with _at least_ one tag, e.g.
-```yaml
-- name: Uncategorized
-color: #000
-icon: null
-featured: false
-```
-
-- Be sure for your markdown files to include proper frontmatter content, e.g.:
-
-```markdown
-
----
-title: "Post title"
-path: "/path-to-your-post"
-tags: ["Theme"]
-featuredImage: "./cover.jpg"
-excerpt: Descriptive description.
-created: 2019-07-29
-updated: 2019-07-29
----
-
-```
+   1. Be sure to have a `content` directory within your Gatsby installation
+   2. Be sure to have a `tags.yml` file within the `content` directory with _at least_ one tag, e.g.
+   
+      ```yaml
+      - name: Uncategorized
+        color: #000
+        icon: null
+        featured: false
+      ```
+      
+   3. Be sure for your markdown files to include proper frontmatter content, e.g.:
+   
+      ```markdown   
+      ---
+      title: "Post title"
+      path: "/path-to-your-post"
+      tags: ["Theme"]
+      featuredImage: "./cover.jpg"
+      excerpt: Descriptive description.
+      created: 2019-07-29
+      updated: 2019-07-29
+      ---
+      
+      ```
 
 For further instructions check the other docs:
 
