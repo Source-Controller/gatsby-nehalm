@@ -33,7 +33,7 @@ See [here](https://nehalem.netlify.com/features) for details!
 This is the mono repo containing the demo __and__ the theme. Check the [theme-specific README](theme/README.md) for further 
 details on the theme.
 
-In case you want to work with this mono repo (e.g. for pull requests, ...):
+In case you want to work with this mono repo (for local development, pull requests, etc.):
 
 1. Clone / fork the repository and `cd` into the directory
 
