@@ -53,7 +53,7 @@ const Theme: DefaultTheme = {
 export default Theme;
 ```
 
-And change the variables to your needs.
+And change the values to your needs.
 
 ## Metadata
 

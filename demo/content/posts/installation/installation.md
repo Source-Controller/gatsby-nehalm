@@ -22,9 +22,31 @@ yarn add @nehalist/gatsby-theme-nehalem
 
 ```javascript
 module.exports = {
-  plugins: [`@nehalist/gatsby-theme-nehalem`],
+  plugins: [
+    {
+      resolve: `@nehalist/gatsby-theme-nehalem`,
+      options: { // optional theme options
+        // location to our content
+        contentPath: `content`,
+        // the page manifest
+        manifest: {
+          name: `nehalem - A Gatsby theme`,
+          short_name: `nehalem`,
+          start_url: `/`,
+          background_color: `#a4cbb8`,
+          theme_color: `#a4cbb8`,
+          display: `minimal-ui`,
+          icon: `${__dirname}/assets/nehalist-gatsby.png`
+        },
+        // if archive pages should be generated automatically
+        loadDefaultPages: true
+      }
+    }
+  ],
 };
 ```
+
+*Note: In a future release theme options will cover most configurations of the `gatsby-config.js`!*
 
 3. Be sure to have a `content` directory within your Gatsby installation __and__ a `tags.yml` file within this directory!
 

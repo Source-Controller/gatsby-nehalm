@@ -8,7 +8,7 @@ created: 2019-07-29
 updated: 2019-07-29
 ---
 
-Nehalem is feature-rich; many things like SEO, search functionality or responsive for all devices (mobile, tablet and desktop) are already 
+Nehalem is feature-rich; many things like SEO, search functionality or optimization for all devices (mobile, tablet and desktop) are already 
 implemented. Let's take a look at all features available:
 
 ## Dynamic navigation
@@ -32,9 +32,7 @@ leads to a decent [Lighthouse](https://www.gatsbyjs.org/docs/audit-with-lighthou
 
 ## Responsive
 
-Nehalem was optimized for phones, tablets and large desktops - which should cover most devices!
-
-IMAGE
+Nehalem is optimized for phones, tablets and large desktops!
 
 ## Customizable
 
@@ -57,6 +55,13 @@ Archive pages are available at:
 - `/archive` for all posts
 - `/tag/{tagname}` for all posts belonging to a tag
 - `/tags` for all tags
+
+## Table of contents
+
+Posts are automatically attached by a table of contents (like the one you can see on the left side) as long as they any headings (`h2` or 
+`h3`). Posts without any headings are centered like you can see in the [Getting Started](/getting-started) post.
+
+> The TOC is toggleable on mobile for a better user experience!
 
 ## SEO
 
