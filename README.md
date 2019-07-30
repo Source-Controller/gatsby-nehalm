@@ -3,7 +3,7 @@
 ![Travis (.org)](https://img.shields.io/travis/nehalist/gatsby-theme-nehalem)
 
 <p align="center">
-    ![nehalem](logo.png)
+    <img src="https://github.com/nehalist/gatsby-theme-nehalem/blob/master/theme/logo.png?raw=true">
 </p>
 
 Check the [Demo](https://nehalem.netlify.com)!
