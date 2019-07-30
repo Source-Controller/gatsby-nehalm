@@ -4,5 +4,9 @@
   featured: true
 - name: Theme
   color: #00ffee
-  icon: ./assets/images/nehalist_IconRound.png
+  icon: ./assets/images/logo.png
+  featured: true
+- name: Demo
+  color: #f0db4f
+  icon: ./assets/images/javascript.svg
   featured: true
