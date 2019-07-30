@@ -3,9 +3,9 @@ title: "Getting started"
 path: "/getting-started"
 tags: ["Theme"]
 featuredImage: "./cover.jpg"
-excerpt: Nehalem is easily installable due to its packaged nature.
-created: 2019-07-20
-updated: 2019-07-20
+excerpt: Nehalem is easy to install due to its packaged nature. Learn how to install it and the basics of the configuration capabilities.
+created: 2019-07-30
+updated: 2019-07-30
 ---
 
 > **Important**: Before diving right into the installation check the [Using a Gatsby Theme](https://www.gatsbyjs.org/docs/themes/using-a-gatsby-theme) guide!
