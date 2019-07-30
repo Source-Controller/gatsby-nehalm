@@ -30,30 +30,16 @@ See [here](https://nehalem.netlify.com/features) for details!
 
 ## Installation
 
-> A more detailed guide on installation can be found [here](https://nehalem.netlify.com/getting-started)!
+This is the mono repo containing the demo __and__ the theme. Check the [theme-specific README](theme/README.md) for further 
+details on the theme.
 
-To use this theme in your Gatsby sites, follow these instructions:
+In case you want to work with this mono repo (e.g. for pull requests, ...):
 
-1.  Install the theme
-    ```sh
-    npm install --save @nehalist/gatsby-theme-nehalem
-    # or
-    yarn add @nehalist/gatsby-theme-nehalem
-    ```
+1. Clone / fork the repository and `cd` into the directory
 
-2.  Add the theme to your `gatsby-config.js`:
-    ```js
-    module.exports = {
-      plugins: [
-        '@nehalist/gatsby-theme-nehalem'
-      ]
-    }
-    ```
+2. Run `yarn` to install dependencies
 
-3.  Start your site
-    ```sh
-    gatsby develop
-    ```
+3. Run `yarn workspace demo develop` to start the demo locally.
 
 ## Documentation
 
