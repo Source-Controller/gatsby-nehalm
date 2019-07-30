@@ -2,9 +2,11 @@
 
 ![Travis (.org)](https://img.shields.io/travis/nehalist/gatsby-theme-nehalem)
 
-Check the [Demo](https://nehalem.netlify.com)!
+<p align="center">
+    ![nehalem](logo.png)
+</p>
 
-![Nehalist Gatsby](theme/assets/nehalist-gatsby.png)
+Check the [Demo](https://nehalem.netlify.com)!
 
 ## Features
 
@@ -23,3 +25,45 @@ Out-of-the-box:
 - Customizable
 
 See [here](https://nehalem.netlify.com/features) for details!
+
+## Installation
+
+> A more detailed guide on installation can be found [here](https://nehalem.netlify.com/getting-started)!
+
+To use this theme in your Gatsby sites, follow these instructions:
+
+1.  Install the theme
+    ```sh
+    npm install --save @nehalist/gatsby-theme-nehalem
+    # or
+    yarn add @nehalist/gatsby-theme-nehalem
+    ```
+
+2.  Add the theme to your `gatsby-config.js`:
+    ```js
+    module.exports = {
+      plugins: [
+        '@nehalist/gatsby-theme-nehalem'
+      ]
+    }
+    ```
+
+3.  Start your site
+    ```sh
+    gatsby develop
+    ```
+
+## Documentation
+
+The entire documentation can be found on the [Demo](https://nehalem.netlify.com). Alternatively check 
+the [GitHub repository](https://github.com/nehalist/gatsby-theme-nehalem).
+
+## Like the theme?
+
+Happy to hear that! Feel free to star it on [GitHub](https://github.com/nehalist/gatsby-theme-nehalem)!
+
+## Author
+
+Developed by [nehalist.io](https://nehalist.io).
+
+*Big thanks to my SO for the awesome logo!*
