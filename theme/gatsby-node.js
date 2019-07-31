@@ -37,7 +37,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       }
       posts: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
-        limit: ${postsPerPage},
         sort: { fields: frontmatter___created, order: DESC }
       ) {
         edges {
@@ -134,7 +133,8 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     path: "/",
     component: require.resolve(`./src/templates/posts.tsx`),
     context: {
-      posts
+      posts,
+      postsPerPage
     }
   });
 };

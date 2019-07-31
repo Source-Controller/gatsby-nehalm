@@ -13,6 +13,7 @@ import Theme from "../styles/theme";
 interface PostsPageProps {
   pathContext: {
     posts: Post[];
+    postsPerPage: number;
   };
   location: Location;
 }
@@ -76,7 +77,7 @@ const ArchiveLink = styled(Link)`
 `;
 
 const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext, location }) => {
-  const posts = pathContext.posts;
+  const posts = pathContext.posts.slice(0, pathContext.postsPerPage);
 
   return (
     <Layout>
