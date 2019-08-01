@@ -2,6 +2,8 @@ import React, {FunctionComponent} from "react";
 import styled from "styled-components";
 import Bio from "@nehalist/gatsby-theme-nehalem/src/components/bio";
 import Theme from "@nehalist/gatsby-theme-nehalem/src/styles/theme";
+import Carbon from "react-carbon";
+import AdStyle from "./style";
 
 const StickySidebarContent = styled.div`
   position: sticky;
@@ -29,9 +31,20 @@ const DownloadButton = styled.a`
   }
 `;
 
+const StyledBioWrapper = styled.div`
+  margin: 40px 0;
+`;
+
 const SidebarContent: FunctionComponent = () => {
   return (
     <StickySidebarContent>
+      <AdStyle />
+      <Carbon name={`carbon-home`} placement={`nehalemnetlifycom`} serve={`CE7D453J`} />
+
+      <StyledBioWrapper>
+        <Bio textAlign={`justify`} avatarStyle={{float: `left`, marginRight: `10px`}}/>
+      </StyledBioWrapper>
+
       <DownloadButton
         href={`https://nehalem.netlify.com/getting-started`}
         target={`_blank`}
@@ -41,7 +54,6 @@ const SidebarContent: FunctionComponent = () => {
         Get this theme &#129321;
       </DownloadButton>
 
-      <Bio textAlign={`justify`} avatarStyle={{float: `left`, marginRight: `10px`}}/>
     </StickySidebarContent>
   );
 };
