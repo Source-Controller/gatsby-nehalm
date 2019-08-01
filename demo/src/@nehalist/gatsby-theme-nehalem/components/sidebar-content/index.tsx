@@ -21,7 +21,7 @@ const DownloadButton = styled.a`
   font-size: 1.2em;
   text-align: center;
   border-radius: .3em;
-  margin-bottom: 30px;
+  margin: 30px 0;
   transition: .5s all;
 
   &:hover {
@@ -31,19 +31,13 @@ const DownloadButton = styled.a`
   }
 `;
 
-const StyledBioWrapper = styled.div`
-  margin: 40px 0;
-`;
-
 const SidebarContent: FunctionComponent = () => {
   return (
     <StickySidebarContent>
       <AdStyle />
       <Carbon name={`carbon-home`} placement={`nehalemnetlifycom`} serve={`CE7D453J`} />
 
-      <StyledBioWrapper>
-        <Bio textAlign={`justify`} avatarStyle={{float: `left`, marginRight: `10px`}}/>
-      </StyledBioWrapper>
+      <Bio textAlign={`justify`} avatarStyle={{float: `left`, marginRight: `10px`}}/>
 
       <DownloadButton
         href={`https://nehalem.netlify.com/getting-started`}

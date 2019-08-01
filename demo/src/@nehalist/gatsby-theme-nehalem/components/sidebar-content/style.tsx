@@ -13,6 +13,7 @@ const AdStyle = createGlobalStyle`
     max-width: 100%;
     font-size: 12px;
     background-color: #fff;
+    margin: 0 0 30px;
 
     @include smallerThan(xs) {
       min-width: 0;
