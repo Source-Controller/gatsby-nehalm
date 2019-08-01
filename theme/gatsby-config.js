@@ -38,6 +38,10 @@ module.exports = (themeOptions) => {
           name: 'RSS',
           path: '/rss.xml'
         },
+        {
+          name: 'Sitemap',
+          path: '/sitemap.xml'
+        }
       ],
       search: true,
       author: {

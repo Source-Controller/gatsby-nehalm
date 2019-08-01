@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from "react";
 import {MenuItem} from "../../utils/models";
-import {Copyright, DesignBy, FooterContainer, FooterMenuItem, StyledFooter, StyledNav} from "./style";
+import {Copyright, DesignBy, FooterContainer, FooterMenuItem, FooterMenuLink, StyledFooter, StyledNav} from "./style";
 
 interface FooterProps {
   menu: MenuItem[];
@@ -14,7 +14,12 @@ const Footer: FunctionComponent<FooterProps> = ({menu, owner}) => (
         <ul>
           {menu.map((item, index) => (
             <li key={index}>
-              <FooterMenuItem to={item.path}>{item.name}</FooterMenuItem>
+              {/* Links to RSS and Sitemap are handled
+                  differently (for now) since they're technically external links */}
+              {['/rss.xml', '/sitemap.xml'].indexOf(item.path) >= 0
+                ? <FooterMenuItem href={item.path} rel={`noopener noreferrer`}>{item.name}</FooterMenuItem>
+                : <FooterMenuLink to={item.path}>{item.name}</FooterMenuLink>
+              }
             </li>
           ))}
         </ul>
