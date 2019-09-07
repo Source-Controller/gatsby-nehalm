@@ -30,6 +30,8 @@ See [here](https://nehalem.netlify.com/features) for details!
 
 ## Installation
 
+> See [this repo](https://github.com/nehalist/gatsby-starter-nehalem) for a quick start!
+
 This is the mono repo containing the demo __and__ the theme. Check the [theme-specific README](theme/README.md) for further 
 details on the theme.
 

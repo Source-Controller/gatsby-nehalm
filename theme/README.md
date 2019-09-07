@@ -30,6 +30,8 @@ See [here](https://nehalem.netlify.com/features) for details!
 
 ## Installation
 
+> See [this repo](https://github.com/nehalist/gatsby-starter-nehalem) for a quick start!
+
 > A more detailed guide on installation can be found [here](https://nehalem.netlify.com/getting-started)!
 
 To use this theme in your Gatsby sites, follow these instructions:
