@@ -1,5 +1,5 @@
 module.exports = (themeOptions) => {
-  const loadDefaultPages = themeOptions.loadDefaultPages ? themeOptions.loadDefaultPages : true;
+  const loadDefaultPages = themeOptions.loadDefaultPages !== undefined ? themeOptions.loadDefaultPages : true;
   const contentPath      = themeOptions.contentPath || 'content';
   const manifest         = themeOptions.manifest ? themeOptions.manifest : {
     name: `nehalem - A Gatsby theme`,
@@ -192,6 +192,6 @@ module.exports = (themeOptions) => {
           ]
         }
       }
-    ]
+    ].filter(Boolean)
   };
 };
