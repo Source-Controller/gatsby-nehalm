@@ -149,7 +149,7 @@ const SEO: FunctionComponent<SEOProps> = ({
           "headline": "${siteTitle}",
           "url": "${canonical}",
           ${publishedAt ? `"datePublished": "${publishedAt}",` : ``}
-          ${updatedAt ? `"datePublished": "${updatedAt}",` : ``}
+          ${updatedAt ? `"dateModified": "${updatedAt}",` : ``}
           ${metaImage ? `"image": {
             "@type": "ImageObject",
             "url": "${metaImage}",
