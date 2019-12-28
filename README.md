@@ -1,6 +1,6 @@
 # Nehalem Gatsby Theme
 
-![Travis (.org)](https://img.shields.io/travis/nehalist/gatsby-theme-nehalem)
+![Build Status](https://github.com/nehalist/gatsby-theme-nehalem/workflows/Node%20CI/badge.svg)
 
 <p align="center">
     <img src="https://github.com/nehalist/gatsby-theme-nehalem/blob/master/theme/logo.png?raw=true">
@@ -32,7 +32,7 @@ See [here](https://nehalem.netlify.com/features) for details!
 
 > See [this repo](https://github.com/nehalist/gatsby-starter-nehalem) for a quick start!
 
-This is the mono repo containing the demo __and__ the theme. Check the [theme-specific README](theme/README.md) for further 
+This is the mono repo containing the demo __and__ the theme. Check the [theme-specific README](theme/README.md) for further
 details on the theme.
 
 In case you want to work with this mono repo (for local development, pull requests, etc.):
@@ -45,7 +45,7 @@ In case you want to work with this mono repo (for local development, pull reques
 
 ## Documentation
 
-The entire documentation can be found on the [Demo](https://nehalem.netlify.com). Alternatively check 
+The entire documentation can be found on the [Demo](https://nehalem.netlify.com). Alternatively check
 the [GitHub repository](https://github.com/nehalist/gatsby-theme-nehalem).
 
 ## Like the theme?
