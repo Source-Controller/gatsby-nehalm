@@ -5,7 +5,7 @@
     "email": "kevin@nehalist.io",
     "url": "https://nehalist.io"
   },
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "lint:ts": "tslint -c ../tslint.json 'theme/src/**/*.{ts,tsx}'",
     "lint:css": "stylelint --config ../.stylelintrc './src/**/*.{ts,tsx}'",
