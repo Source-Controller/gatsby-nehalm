@@ -18,7 +18,7 @@ The basic structure for pages is:
 import React, {FunctionComponent} from "react";
 import Layout from "@nehalist/gatsby-theme-nehalem/src/components/layout";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
-import Container from "@nehalist/gatsby-theme-nehalem/src/components/common";
+import {Container} from "@nehalist/gatsby-theme-nehalem/src/components/common";
 
 const CustomPage: FunctionComponent<{ location: Location }> = ({location}) => (
   <Layout bigHeader={false}>
@@ -27,7 +27,7 @@ const CustomPage: FunctionComponent<{ location: Location }> = ({location}) => (
       title={`Page title`}
     />
     <Container>
-      Your content    
+      Your content
     </Container>
 </Layout>
 );
@@ -35,7 +35,7 @@ const CustomPage: FunctionComponent<{ location: Location }> = ({location}) => (
 export default CustomPage;
 ```
 
-The `<Layout />` component either shows a big header (like the one on the front page) or a small one (like on every other page) based on the 
+The `<Layout />` component either shows a big header (like the one on the front page) or a small one (like on every other page) based on the
 `bigHeader` prop.
 
 The `<SEO />` component takes care of optimizing everything in terms of SEO. The `location` prop comes from Gatsby.
@@ -63,7 +63,7 @@ const CustomPage: FunctionComponent<CustomPageProps> = ({showConditionalText, lo
     />
     <Container>
       Your content
-      {showConditionalText && <>This text is only shown when showConditionalText is true </>} // highlight-line    
+      {showConditionalText && <>This text is only shown when showConditionalText is true </>} // highlight-line
     </Container>
 </Layout>
 );
@@ -90,7 +90,7 @@ const CustomPage: FunctionComponent<{ location: Location }> = ({location}) => (
     />
     <Subheader title={`Page title`} subtitle={`Something else`} /> // highlight-line
     <Container>
-      Your content    
+      Your content
     </Container>
 </Layout>
 );
