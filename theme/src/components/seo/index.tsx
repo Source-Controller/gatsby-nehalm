@@ -54,7 +54,7 @@ const SEO: FunctionComponent<SEOProps> = ({
   const metaDescription = description
     ? description
     : metadata.description.replace("%TOPICS%", metadata.topics.join(", "));
-  const metaImage       = image ? `${metadata.siteUrl}/${image}` : null;
+  const metaImage       = image ? `${metadata.siteUrl}${image}` : null;
   const canonical       = url.resolve(metadata.siteUrl, location.pathname);
 
   return (
@@ -67,19 +67,19 @@ const SEO: FunctionComponent<SEOProps> = ({
           content: metaDescription,
         },
         {
-          name: `og:title`,
+          property: `og:title`,
           content: siteTitle,
         },
         {
-          name: `og:type`,
+          property: `og:type`,
           content: isArticle ? `article` : `website`,
         },
         {
-          name: `og:description`,
+          property: `og:description`,
           content: metaDescription,
         },
         {
-          name: `og:url`,
+          property: `og:url`,
           content: canonical,
         },
         {
@@ -128,7 +128,7 @@ const SEO: FunctionComponent<SEOProps> = ({
             content: tags[0],
           }] : [],
           metaImage ? [{
-            name: `og:image`,
+            property: `og:image`,
             content: metaImage,
           }, {
             name: `twitter:image`,
