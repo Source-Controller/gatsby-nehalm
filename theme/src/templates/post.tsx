@@ -301,7 +301,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
           </BioWrapper>
         </PostAdditionContent>
       </PostAddition>
-      <Comments/>
+      <Comments id={post.id}/>
     </Layout>
   );
 };
@@ -313,6 +313,7 @@ export const query = graphql`
     post: markdownRemark(
       id: { eq: $postId }
     ) {
+      id
       headings {
         depth
       }
