@@ -1,9 +1,9 @@
 # Nehalem Gatsby Theme
 
-![Build Status](https://github.com/nehalist/gatsby-theme-nehalem/workflows/Node%20CI/badge.svg)
+![Build Status](https://github.com/followDev/gatsby-nehalm/workflows/Node%20CI/badge.svg)
 
 <p align="center">
-    <img src="https://github.com/nehalist/gatsby-theme-nehalem/blob/master/theme/logo.png?raw=true">
+    <img src="https://github.com/followDev/gatsby-nehalm/blob/master/theme/logo.png?raw=true">
 </p>
 
 > Check the [Demo](https://nehalem.netlify.com)!
@@ -30,7 +30,7 @@ See [here](https://nehalem.netlify.com/features) for details!
 
 ## Installation
 
-> See [this repo](https://github.com/nehalist/gatsby-starter-nehalem) for a quick start!
+> See [this repo](https://github.com/followDev/gatsby-nehalm) for a quick start!
 
 This is the mono repo containing the demo __and__ the theme. Check the [theme-specific README](theme/README.md) for further
 details on the theme.
@@ -46,14 +46,14 @@ In case you want to work with this mono repo (for local development, pull reques
 ## Documentation
 
 The entire documentation can be found on the [Demo](https://nehalem.netlify.com). Alternatively check
-the [GitHub repository](https://github.com/nehalist/gatsby-theme-nehalem).
+the [GitHub repository](https://github.com/followDev/gatsby-nehalm).
 
 ## Like the theme?
 
-Happy to hear that! Feel free to star it on [GitHub](https://github.com/nehalist/gatsby-theme-nehalem)!
+Happy to hear that! Feel free to star it on [GitHub](https://github.com/followDev/gatsby-nehalm)!
 
 ## Author
 
-Developed by [nehalist.io](https://nehalist.io).
+Developed by [followDev.io](https://followDev.io).
 
 *Big thanks to my SO for the awesome logo!*
